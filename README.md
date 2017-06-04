@@ -2,9 +2,9 @@
 
 A website for storing and sharing working code snippets.
 
-# Description: Combining functionality of CodePen & GistBox with a focus on educational usage. 
+### Description: Combining functionality of CodePen & GistBox with a focus on educational usage. 
 
-# *Questions:*
+#### *Questions:*
 
  Database Choice. Storing snips, browsing forum style, account based organizing & saving.
 
@@ -14,7 +14,7 @@ A website for storing and sharing working code snippets.
 
  Github Gist?
  
-# Educational Features for future:
+#### Educational Features for future:
   Ø Forking
   Ø Push snip, collection, or tag group to a list of emails/users.
   Ø Slack Integration for animated preview thumbnail
