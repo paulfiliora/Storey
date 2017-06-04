@@ -6,10 +6,13 @@ A website for storing and sharing working code snippets.
 
 *Questions:*
 
-_Database Choice._ Storing snips, browsing forum style, account based organizing & saving.
-_Code IDE._ For v1, what service can I use to demo code?
-_Animated Thumbnail Preview_ like CodePen
-_Github Gist?_
+Database Choice. Storing snips, browsing forum style, account based organizing & saving.
+
+Code IDE. For v1, what service can I use to demo code?
+
+Animated Thumbnail Preview like CodePen
+
+Github Gist?
  
 Educational Features for future:
   Ø Forking
