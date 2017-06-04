@@ -2,7 +2,7 @@
 
 A website for storing and sharing working code snippets.
 
-### Description: Combining functionality of CodePen & GistBox with a focus on educational usage. 
+#### Description: Combining functionality of CodePen & GistBox with a focus on educational usage. 
 
 #### *Questions:*
 
