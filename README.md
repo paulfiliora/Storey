@@ -1,20 +1,14 @@
 ## CodeSnip
 
-A website for storing and sharing working code snippets.
+A website for storing and sharing javascript problem sets. Instructors can simply import a github repo, and the webapp will set up psets. Students can then get right to them, or with an account engage in communal problem solving and comment out their solutions and questions.
 
-#### Description: Combining functionality of CodePen & GistBox with a focus on educational usage. 
+#### Details
 
-#### *Questions:*
-
- Database Choice. Storing snips, browsing forum style, account based organizing & saving.
-
- Code IDE. For v1, what service can I use to demo code?
-
- Animated Thumbnail Preview like CodePen
-
- Github Gist?
+Github API
+Firebase Storage
  
-#### Educational Features for future:
-  Ø Forking
-  Ø Push snip, collection, or tag group to a list of emails/users.
-  Ø Slack Integration for animated preview thumbnail
+#### Educational Features:
+  Ø Code Editing
+  Ø Gamification Rewards
+  Ø Push to a list of emails/users.
+  Ø Slack Integration, Categorizing PSet types or class. 
