@@ -1,4 +1,4 @@
-## CodeSnip
+## ScriptUp
 
 A website for storing and sharing javascript problem sets. Instructors can simply import a github repo, and the webapp will set up psets. Students can then get right to them, or with an account engage in communal problem solving and comment out their solutions and questions.
 
