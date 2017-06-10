@@ -1,18 +1,14 @@
 import React from 'react'
-// import Footer from './Footer'
-// import AddTodo from '../containers/AddTodo'
-// import VisibleTodoList from '../containers/VisibleTodoList'
-import NavigationBar from './Navbar'
-import MainContainer from './Sidebar'
-const App = () => (
+import { connect } from 'react-redux'
+import Navbar from './Navbar'
+import MainContainer from './MainContainer'
+
+let App = (props) => (
   <div>
-    <NavigationBar />
-    <MainContainer />
+    <Navbar />
+    <MainContainer  {...props} />
   </div>
 )
 
+App = connect()(App)
 export default App
-
-    // <AddTodo />
-    // <VisibleTodoList />
-    // <Footer />

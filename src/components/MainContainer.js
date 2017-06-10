@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import { Sidebar, Segment, Button, Menu, Icon, Header } from 'semantic-ui-react'
+import { readAllUsers } from '../actions'
+import { createNewUser } from '../actions'
 
-class MainContainer extends Component {
+
+export default class MainContainer extends Component {
     state = { visible: true }
 
     toggleVisibility = () => this.setState({ visible: !this.state.visible })
@@ -9,7 +12,7 @@ class MainContainer extends Component {
     render() {
         const { visible } = this.state
         return (
-            <div style={{height: 600}}>
+            <div style={{ height: 600 }}>
                 <Sidebar.Pushable as={Segment}>
                     <Sidebar as={Menu} animation='slide along' width='thin' visible={visible} icon='labeled' vertical inverted>
                         <Menu.Item name='home'>
@@ -29,6 +32,10 @@ class MainContainer extends Component {
                         <Segment basic>
                             <Header as='h3'>Application Content</Header>
                             <Button onClick={this.toggleVisibility}>Toggle Visibility</Button>
+                            <Button onClick={e => {
+                                e.preventDefault()
+                                this.props.dispatch(createNewUser())
+                            }}>Test fbDB</Button>
                         </Segment>
                     </Sidebar.Pusher>
                 </Sidebar.Pushable>
@@ -36,5 +43,3 @@ class MainContainer extends Component {
         )
     }
 }
-
-export default MainContainer

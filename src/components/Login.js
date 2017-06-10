@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { Form } from 'semantic-ui-react'
-// import {createUser, readUsers} from '../reducers/firebase'
+import { readAllUsers } from '../actions'
 
-class Login extends Component {
+
+export default class Login extends Component {
     state = { name: '', email: '', submittedName: '', submittedEmail: '' }
 
     handleChange = (e, { name, value }) => this.setState({ [name]: value })
@@ -20,7 +21,8 @@ class Login extends Component {
     }
 
     render() {
-        const { name, email, submittedName, submittedEmail } = this.state
+        const { name, email } = this.state
+     // const { name, email, submittedName, submittedEmail } = this.state
 
         return (
             <div>
@@ -35,5 +37,3 @@ class Login extends Component {
         )
     }
 }
-
-export default Login

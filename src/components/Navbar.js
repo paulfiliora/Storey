@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Dropdown, Menu, Header, Image, Modal } from 'semantic-ui-react'
+import { Button, Dropdown, Menu, Modal } from 'semantic-ui-react'
 import Login from './Login.js'
 
 export default class NavBar extends Component {

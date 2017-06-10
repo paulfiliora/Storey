@@ -1,22 +1,13 @@
-let nextTodoId = 0
-export const addTodo = (text) => {
+export const readAllUsers = () => {
   return {
-    type: 'ADD_TODO',
-    id: nextTodoId++,
-    text
+    type: 'READ_ALL_USERS'
   }
 }
 
-export const setVisibilityFilter = (filter) => {
+export const createNewUser = (name, email) => {
   return {
-    type: 'SET_VISIBILITY_FILTER',
-    filter
-  }
-}
-
-export const toggleTodo = (id) => {
-  return {
-    type: 'TOGGLE_TODO',
-    id
+    type: 'CREATE_NEW_USER',
+    name: 'paul',
+    email: 'test'
   }
 }

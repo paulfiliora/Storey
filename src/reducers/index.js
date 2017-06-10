@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux'
-import todos from './todos'
-import visibilityFilter from './visibilityFilter'
+import firebaseDB from './firebase'
 
-const todoApp = combineReducers({
-  todos,
-  visibilityFilter
+const scriptupApp = combineReducers({
+  firebaseDB
 })
 
-export default todoApp
+export default scriptupApp
