@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Form } from 'semantic-ui-react'
-import { readAllUsers } from '../actions'
+import { createNewUser } from '../actions'
 
 
 export default class Login extends Component {
@@ -14,15 +14,14 @@ export default class Login extends Component {
 
         this.setState({ submittedName: name, submittedEmail: email })
 
-        this.props.dispatch('CREATE_USER', {
+        this.props.dispatch(createNewUser (
 			name,
 			email,
-		});
+		));
     }
 
     render() {
         const { name, email } = this.state
-     // const { name, email, submittedName, submittedEmail } = this.state
 
         return (
             <div>

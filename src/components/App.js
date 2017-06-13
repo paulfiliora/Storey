@@ -1,12 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Container } from 'semantic-ui-react'
+
 import Navbar from './Navbar'
 import MainContainer from './MainContainer'
 
 let App = (props) => (
   <div>
-    <Navbar />
-    <MainContainer  {...props} />
+    <Container fluid color={'teal'}>
+      <Navbar {...props} />
+      <MainContainer  {...props} />
+    </Container>
   </div>
 )
 

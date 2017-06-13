@@ -4,10 +4,11 @@ export const readAllUsers = () => {
   }
 }
 
-export const createNewUser = (name, email) => {
+export const createNewUser = (email, password, username) => {
   return {
     type: 'CREATE_NEW_USER',
-    name: 'paul',
-    email: 'test'
+    email,
+    password,
+    username
   }
 }

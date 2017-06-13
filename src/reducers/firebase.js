@@ -10,18 +10,59 @@ const config = {
 };
 firebase.initializeApp(config);
 
-const database = firebase.database();
+// const database = firebase.database();
 
+// function createNewUser(name, email, username) {
+//   const newUserRef = database.ref('users').push();
+//   const newUserKey = newUserRef.key;
 
-function createNewUser(name, email) {
-  const newUserRef = database.ref('users').push();
-  const newUserKey = newUserRef.key;
+//   database.ref('users').push({
+//     userID: newUserKey,
+//     name: name,
+//     email: email,
+//     username: username
+//   });
+// }
 
-  database.ref('users').push({
-    userID: newUserKey,
-    username: name,
-    email: email
-  });
+const createUserWithEmailAndPassword = (email, password, username) => {
+  return firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then((authData) => {
+      const userData = {};
+      if (!!username) {
+        userData.displayName = username
+      } else {
+        userData.displayName = ''
+      };
+      return authData.updateProfile({
+        displayName: userData.displayName
+      })
+        .then((res) => {
+          console.log('created user');
+          return authData
+        })
+    }).catch((err) => {
+      console.log('Signup User: ', err);
+      return err
+    })
+}
+
+const loginWithEmailPassword = (email, password) => {
+  return firebase.auth().loginWithEmailPassword(email, password)
+    .then((authData) => {
+      return authData
+    }).catch((err) => {
+      console.log('Login Failed: ', err);
+      return err
+    })
+}
+
+const logOut = (email, password) => {
+  return firebase.auth().signout().then((data) => {
+    return data
+  }).catch((err) => {
+    console.log('Signout failed: ', err)
+    return err
+  })
 }
 
 function readAllUsers(state = {}, action) {
@@ -36,8 +77,11 @@ const firebaseDB = (state = [], action) => {
     case 'READ_ALL_USERS':
       return readAllUsers()
     case 'CREATE_NEW_USER':
-          // return console.log(action)
-      return createNewUser(action.name, action.email)
+      return createUserWithEmailAndPassword(action.email, action.password, action.username)
+    case 'LOGIN_USER':
+      return loginWithEmailPassword(action.name, action.email)
+    case 'LOGOUT_USER':
+      return logOut(action.name, action.email)
     default:
       return state
   }
