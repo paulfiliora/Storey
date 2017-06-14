@@ -43,22 +43,7 @@ export default class LandingPage extends Component {
                         <Image src={'https://firebasestorage.googleapis.com/v0/b/scriptup-5c4f7.appspot.com/o/images%2Fbackgrounds%2Fteam-bump.jpg?alt=media&token=c1443c97-edce-44e5-8d7c-8b72245335b8'} size='medium' shape='circular' centered />
                     </Grid.Column>
                 </Grid.Row>
-
-                <Grid.Row centered columns={4}>
-                    <Grid.Column>
-                        <Image src='/assets/images/wireframe/image.png' />
-                    </Grid.Column>
-                    <Grid.Column>
-                        <Image src='/assets/images/wireframe/image.png' />
-                    </Grid.Column>
-                    <Grid.Column>
-                        <Image src='/assets/images/wireframe/image.png' />
-                    </Grid.Column>
-                    <Grid.Column>
-                        <Image src='/assets/images/wireframe/image.png' />
-                    </Grid.Column>
-                </Grid.Row>
-            </Grid>
+          </Grid>
         )
     }
 }

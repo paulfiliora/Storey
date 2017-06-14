@@ -1,18 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Container } from 'semantic-ui-react'
-
-import Navbar from './Navbar'
-import MainContainer from './MainContainer'
 
 import LandingPage from './Home'
+import Navbar from './Navbar'
+import Footer from './Footer'
+// import MainContainer from './MainContainer'
 
 let App = (props) => (
   <div>
-    <Container fluid color={'teal'}>
       <Navbar {...props} />
       <LandingPage {...props}/>
-    </Container>
+      <Footer {...props}/>
   </div>
 )
 
