@@ -1,38 +1,76 @@
 import React, { Component } from 'react'
-import { Form } from 'semantic-ui-react'
-import { createNewUser } from '../actions'
+import { Button, Form, Divider, Grid, Segment } from 'semantic-ui-react'
+import { createNewUser, loginUser } from '../actions'
 
 
-export default class Login extends Component {
-    state = { name: '', email: '', submittedName: '', submittedEmail: '' }
+export default class LoginForm extends Component {
 
-    handleChange = (e, { name, value }) => this.setState({ [name]: value })
+  state = { email: '', password: '', username: '', submittedEmail: '', submittedPassword: '', submittedUsername: '' }
 
-    handleSubmit = e => {
-        e.preventDefault()
-        const { name, email } = this.state
+  handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
-        this.setState({ submittedName: name, submittedEmail: email })
+  handleRegisterSubmit = e => {
+    e.preventDefault()
+    const { email, password, username } = this.state
 
-        this.props.dispatch(createNewUser (
-			name,
-			email,
-		));
-    }
+    this.setState({ submittedEmail: email, submittedPassword: password, submittedUsername: username })
 
-    render() {
-        const { name, email } = this.state
+    this.props.dispatch(createNewUser(
+      email,
+      password,
+      username
+    ));
+  }
 
-        return (
-            <div>
-                <Form onSubmit={this.handleSubmit}>
-                    <Form.Group>
-                        <Form.Input placeholder='Name' name='name' value={name} onChange={this.handleChange} />
-                        <Form.Input placeholder='Email' name='email' value={email} onChange={this.handleChange} />
-                        <Form.Button content='Submit' />
-                    </Form.Group>
-                </Form>
-            </div>
-        )
-    }
+    handleLoginSubmit = e => {
+    e.preventDefault()
+    const { email, password } = this.state
+
+    this.setState({ submittedEmail: email, submittedPassword: password })
+
+    this.props.dispatch(loginUser(
+      email,
+      password
+    ));
+  }
+
+  render() {
+
+    const { username, password, email } = this.state
+
+    return (
+      <div>
+
+<Grid columns={2} divided>
+    <Grid.Row stretched>
+      <Grid.Column>
+            <Segment >
+
+              <Form onSubmit={this.handleRegisterSubmit} className='attached fluid segment'>
+                <Form.Input label='Username' placeholder='Username' name='username' type='text' value={username} onChange={this.handleChange} />
+                <Form.Input label='Email' placeholder='Email' name='email' value={email} onChange={this.handleChange} />
+                <Form.Input label='Password' placeholder='Password' name='password' value={password} onChange={this.handleChange} />
+                <Form.Checkbox inline label='I agree to the terms and conditions' />
+                <Button color='blue'>Submit</Button>
+              </Form>
+            </Segment>
+
+      </Grid.Column>
+      <Grid.Column>
+
+            <Segment >
+
+              <Form onSubmit={this.handleLoginSubmit} className='attached fluid segment'>
+                <Form.Input label='Email' placeholder='Email' name='email' type='text' value={email} onChange={this.handleChange} />
+                <Form.Input label='Password' placeholder='Password' name='password' value={password} onChange={this.handleChange} />
+                <Button color='blue'>Submit</Button>
+              </Form>
+            </Segment>
+      </Grid.Column>
+    </Grid.Row>
+  </Grid>
+
+      </div>
+    )
+  }
 }

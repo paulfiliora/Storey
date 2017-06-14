@@ -12,3 +12,11 @@ export const createNewUser = (email, password, username) => {
     username
   }
 }
+
+export const loginUser = (email, password) => {
+  return {
+    type: 'LOGIN_USER',
+    email,
+    password,
+  }
+}

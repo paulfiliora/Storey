@@ -10,7 +10,9 @@ const config = {
 };
 firebase.initializeApp(config);
 
-// const database = firebase.database();
+const database = firebase.database();
+const auth = firebase.auth()
+
 
 // function createNewUser(name, email, username) {
 //   const newUserRef = database.ref('users').push();
@@ -25,7 +27,7 @@ firebase.initializeApp(config);
 // }
 
 const createUserWithEmailAndPassword = (email, password, username) => {
-  return firebase.auth().createUserWithEmailAndPassword(email, password)
+  return auth.createUserWithEmailAndPassword(email, password)
     .then((authData) => {
       const userData = {};
       if (!!username) {
@@ -36,6 +38,10 @@ const createUserWithEmailAndPassword = (email, password, username) => {
       return authData.updateProfile({
         displayName: userData.displayName
       })
+        .then((res => {
+          const user = auth.currentUser;
+          return user.sendEmailVerification()
+        }))
         .then((res) => {
           console.log('created user');
           return authData
@@ -47,7 +53,7 @@ const createUserWithEmailAndPassword = (email, password, username) => {
 }
 
 const loginWithEmailPassword = (email, password) => {
-  return firebase.auth().loginWithEmailPassword(email, password)
+  return auth.loginWithEmailPassword(email, password)
     .then((authData) => {
       return authData
     }).catch((err) => {
@@ -57,7 +63,7 @@ const loginWithEmailPassword = (email, password) => {
 }
 
 const logOut = (email, password) => {
-  return firebase.auth().signout().then((data) => {
+  return auth.signout().then((data) => {
     return data
   }).catch((err) => {
     console.log('Signout failed: ', err)
@@ -65,8 +71,18 @@ const logOut = (email, password) => {
   })
 }
 
+const deleteAccount = () => {
+  const user = auth.currentUser;
+  return user.delete().then((data) => {
+    return data
+  }).catch((err) => {
+    console.log('Delete failed: ', err);
+    return err
+  })
+}
+
 function readAllUsers(state = {}, action) {
-  return firebase.database().ref('/users').once('value').then(function (snapshot) {
+  return database.ref('/users').once('value').then(function (snapshot) {
     console.log(snapshot.val());
   });
 }
@@ -82,6 +98,8 @@ const firebaseDB = (state = [], action) => {
       return loginWithEmailPassword(action.name, action.email)
     case 'LOGOUT_USER':
       return logOut(action.name, action.email)
+    case 'DELETE_USER':
+      return deleteAccount()
     default:
       return state
   }
