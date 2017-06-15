@@ -1,15 +1,10 @@
 import React, { Component } from 'react'
-import { Grid, Image, Menu, Header, Icon, Segment, Divider } from 'semantic-ui-react'
+import { Grid, Image, Header, Icon, Divider } from 'semantic-ui-react'
 
 
 export default class LandingPage extends Component {
-    state = { activeItem: 'closest' }
-
-    handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
     render() {
-        const { activeItem } = this.state
-
         return (
             <Grid stackable centered columns={1}>
 
