@@ -1,24 +1,24 @@
 import React, { Component } from 'react'
-import { Grid, Segment, Input, Button, Header, Image, Form, Message } from 'semantic-ui-react'
+import { Button, Form, Icon, Message, Container, Modal } from 'semantic-ui-react'
+import LoginForm from './Login.js'
 import { createNewUser } from '../actions'
-
 
 export default class SignUp extends Component {
 
-    state = { email: '', password: '', username: '', submittedEmail: '', submittedPassword: '', submittedUsername: '' }
+    state = { username: '', email: '', password: '', submittedUsername: '', submittedEmail: '', submittedPassword: '' }
 
     handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
     handleSubmit = e => {
         e.preventDefault()
-        const { email, password, username } = this.state
+        const { username, email, password } = this.state
 
-        this.setState({ submittedEmail: email, submittedPassword: password, submittedUsername: username })
+        this.setState({  submittedUsername: username, submittedEmail: email, submittedPassword: password })
 
         this.props.dispatch(createNewUser(
+            username,
             email,
-            password,
-            username
+            password            
         ));
     }
 
@@ -28,24 +28,27 @@ export default class SignUp extends Component {
 
         return (
             <div>
-
-                <Grid columns={1} divided>
-                    <Grid.Row stretched>
-                        <Grid.Column>
-                            <Segment >
-
-                                <Form onSubmit={this.handleSubmit} className='attached fluid segment'>
-                                    <Form.Input label='Username' placeholder='Username' name='username' type='text' value={username} onChange={this.handleChange} />
-                                    <Form.Input label='Email' placeholder='Email' name='email' value={email} onChange={this.handleChange} />
-                                    <Form.Input label='Password' placeholder='Password' name='password' value={password} onChange={this.handleChange} />
-                                    <Form.Checkbox inline label='I agree to the terms and conditions' />
-                                    <Button color='blue'>Submit</Button>
-                                </Form>
-                            </Segment>
-
-                        </Grid.Column>
-                    </Grid.Row>
-                </Grid>
+                <Container>
+                    <br />
+                    <Message
+                        attached
+                        header='Welcome to our ScriptUp!'
+                        content='Fill out the form below to sign-up for a new account'
+                    />
+                    <Form onSubmit={this.handleSubmit} className='attached fluid segment'>
+                        <Form.Input label='Username' placeholder='Username' name='username' type='text' value={username} onChange={this.handleChange} />
+                        <Form.Input label='Email' placeholder='Email' type='text' name='email' value={email} onChange={this.handleChange} />
+                        <Form.Input label='Password' type='password' placeholder='Password' name='password' value={password} onChange={this.handleChange} />
+                        <Form.Checkbox inline label='I agree to the terms and conditions' />
+                        <Button color='blue'>Submit</Button>
+                    </Form>
+                    <Message attached='bottom' warning>
+                        <Icon name='help' />Already signed up?&nbsp;<Modal trigger={<a href='#'>Login here</a>} closeIcon='close'>
+                            <LoginForm {...this.props} />
+                        </Modal>&nbsp;instead.
+                </Message>
+                </Container>
+                <br /><br /> <br /><br /><br /><br />
 
             </div>
         )

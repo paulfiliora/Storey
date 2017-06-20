@@ -14,19 +14,38 @@ const database = firebase.database();
 const auth = firebase.auth()
 
 
-// function createNewUser(name, email, username) {
-//   const newUserRef = database.ref('users').push();
-//   const newUserKey = newUserRef.key;
+// export const writePsetData = () => {
+//   // const newUserRef = database.ref('users').push();
+//   // const newUserKey = newUserRef.key;
 
-//   database.ref('users').push({
-//     userID: newUserKey,
-//     name: name,
-//     email: email,
-//     username: username
-//   });
+//   database.ref('psets').push({
+//     url:"google.com"
+//   }).catch((err) => {
+//     console.log('Push to DB Failed: ', err);
+//     return err})
 // }
 
-const createUserWithEmailAndPassword = (email, password, username) => {
+const writeUserData = (userId, username, email) => {
+  return database.ref('users/' + userId).set({
+    username,
+    email
+  }).catch((err) => {
+    console.log('Push to DB Failed: ', err);
+    return err
+  })
+}
+
+// const writePsetData = (username, email) => {
+//   return database.ref('pset/').set({
+//     username,
+//     email
+//   }).catch((err) => {
+//     console.log('Push to DB Failed: ', err);
+//     return err
+//   })
+// }
+
+const createUserWithEmailAndPassword = (username, email, password) => {
   return auth.createUserWithEmailAndPassword(email, password)
     .then((authData) => {
       const userData = {};
@@ -37,7 +56,10 @@ const createUserWithEmailAndPassword = (email, password, username) => {
       };
       return authData.updateProfile({
         displayName: userData.displayName
-      })
+      }).then((res => {
+          const user = auth.currentUser;
+          return writeUserData(user.uid, user.displayName, user.email)
+        }))
         .then((res => {
           const user = auth.currentUser;
           return user.sendEmailVerification()
@@ -52,9 +74,11 @@ const createUserWithEmailAndPassword = (email, password, username) => {
     })
 }
 
-const loginWithEmailPassword = (email, password) => {
-  return auth.loginWithEmailPassword(email, password)
+
+const signInWithEmailAndPassword = (email, password) => {
+  return auth.signInWithEmailAndPassword(email, password)
     .then((authData) => {
+      console.log('signed in: ', authData)
       return authData
     }).catch((err) => {
       console.log('Login Failed: ', err);
@@ -62,7 +86,7 @@ const loginWithEmailPassword = (email, password) => {
     })
 }
 
-const logOut = (email, password) => {
+const signOut = () => {
   return auth.signout().then((data) => {
     return data
   }).catch((err) => {
@@ -81,23 +105,58 @@ const deleteAccount = () => {
   })
 }
 
-function readAllUsers(state = {}, action) {
-  return database.ref('/users').once('value').then(function (snapshot) {
-    console.log(snapshot.val());
+// export const writePsetData = () => {
+
+export const readAllUsers = (state = {}, action) => {
+const user = firebase.auth().currentUser;
+
+if (user != null) {
+  return user.providerData.forEach(function (profile) {
+    console.log("Sign-in provider: "+profile.providerId);
+    console.log("  Provider-specific UID: "+profile.uid);
+    console.log("  Name: "+profile.displayName);
+    console.log("  Email: "+profile.email);
+    console.log("  Photo URL: "+profile.photoURL);
   });
+} else {
+  return console.log('No user signed in')
 }
 
+  // return database.ref('/users').once('value').then(function (snapshot) {
+  //   console.log(snapshot.val());
+  // });
+}
+
+
+export const readCurrentUser = (state = {}, action) => {
+
+  const user = firebase.auth().currentUser;
+    return database.ref('/users/' + user.uid).once('value').then(function (snapshot) {
+      return snapshot.val().psets
+  }).then((psets) => {
+    return database.ref('/psets/' + psets).once('value').then(function (snapshot){
+      console.log(snapshot.val())
+    })
+  })
+
+.catch((err) => {
+    console.log('error ', err);
+    return err
+  })
+}
 
 const firebaseDB = (state = [], action) => {
   switch (action.type) {
     case 'READ_ALL_USERS':
       return readAllUsers()
+    case 'READ_CURRENT_USER':
+      return readCurrentUser()
     case 'CREATE_NEW_USER':
-      return createUserWithEmailAndPassword(action.email, action.password, action.username)
+      return createUserWithEmailAndPassword(action.username, action.email, action.password)
     case 'LOGIN_USER':
-      return loginWithEmailPassword(action.name, action.email)
+      return signInWithEmailAndPassword(action.email, action.password)
     case 'LOGOUT_USER':
-      return logOut(action.name, action.email)
+      return signOut()
     case 'DELETE_USER':
       return deleteAccount()
     default:

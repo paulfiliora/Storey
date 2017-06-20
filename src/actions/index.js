@@ -4,12 +4,12 @@ export const readAllUsers = () => {
   }
 }
 
-export const createNewUser = (email, password, username) => {
+export const createNewUser = (username, email, password) => {
   return {
     type: 'CREATE_NEW_USER',
+    username,
     email,
-    password,
-    username
+    password    
   }
 }
 
@@ -18,5 +18,17 @@ export const loginUser = (email, password) => {
     type: 'LOGIN_USER',
     email,
     password,
+  }
+}
+
+export const signOut = () => {
+  return {
+    type: 'LOGOUT_USER',
+  }
+}
+
+export const readCurrentUser = () => {
+  return {
+    type: 'READ_CURRENT_USER',
   }
 }
