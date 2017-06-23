@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Grid, Segment, Input, Button, Header, Image, Form, Message } from 'semantic-ui-react'
-import { loginUser, readCurrentUser } from '../actions'
+import { loginUser } from '../actions'
 
 export default class LoginForm extends Component {
 
@@ -10,19 +10,22 @@ export default class LoginForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
+    const { store } = this.context;
+
     const { email, password } = this.state
 
     this.setState({ submittedEmail: email, submittedPassword: password })
 
-    this.props.dispatch(loginUser(
+    store.dispatch(loginUser(
       email,
       password
     ));
 
-    
+
   }
 
   render() {
+    // const { store } = this.context;
     const { email, password } = this.state
 
     return (
@@ -38,7 +41,7 @@ export default class LoginForm extends Component {
             <Form onSubmit={this.handleSubmit} size="large">
               <Segment >
                 <Form.Field>
-                  <Input fluid icon='user' iconPosition='left' placeholder='E-mail address'  name='email' value={email} onChange={this.handleChange} />
+                  <Input fluid icon='user' iconPosition='left' placeholder='E-mail address' name='email' value={email} onChange={this.handleChange} />
                 </Form.Field>
                 <Form.Field>
                   <Input fluid icon='lock' iconPosition='left' placeholder='Password' name='password' type="password" value={password} onChange={this.handleChange} />
@@ -55,3 +58,7 @@ export default class LoginForm extends Component {
     )
   }
 }
+
+LoginForm.contextTypes = {
+    store: React.PropTypes.object
+};

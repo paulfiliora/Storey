@@ -1,24 +1,27 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, browserHistory } from 'react-router-dom'
 
 
-import LandingPage from './Home'
+import Home from './Home'
 import Navbar from './Navbar'
-import Footer from './Footer'
-import MainContainer from './MainContainer'
+// import Footer from './Footer'
+import UserPage from './UserPage'
 import SignUp from './Signup'
 
-let App = (props) => (
-  <Router>
+let App = () => (
+
+  <Router history={browserHistory}>
 
     <div>
-      <Navbar {...props} />
-      <Route exact path="/" component={() => <LandingPage {...props} />} />
-      <Route path="/MainContainer" component={MainContainer} />
-      <Route exact path="/SignUp" component={() => <SignUp {...props} />} />
+      <Navbar />
 
-      <Footer />
+      <Route exact path="/" component={() => <Home />} />
+
+      <Route exact path="/UserPage" component={() => <UserPage />} />
+
+      <Route exact path="/SignUp" component={() => <SignUp />} />
+
     </div>
 
   </Router>
@@ -27,7 +30,3 @@ let App = (props) => (
 
 App = connect()(App)
 export default App
-
-    //       <LandingPage {...props} />
-      // <Navbar {...props} />
-      // <MainContainer  {...props} />

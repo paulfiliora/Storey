@@ -1,20 +1,34 @@
 import React, { Component } from 'react'
 import { Grid, Image, Header, Icon, Divider } from 'semantic-ui-react'
 
-import {readCurrentUser} from '../actions'
+import { readCurrentUser } from '../actions'
 
-export default class LandingPage extends Component {
+export default class Home extends Component {
 
-  handleSubmit = e => {
-    e.preventDefault()
+    componentDidMount() {
+        const { store } = this.context;
+        this.unsubscribe = store.subscribe(() => this.forceUpdate()
+        );
+    }
 
+    componentWillUnmount() {
+        this.unsubscribe();
+    }
 
-    this.props.dispatch(readCurrentUser(
+    handleSubmit = e => {
+        e.preventDefault()
 
-    ));
-  }
+        const { store } = this.context;
+
+        store.dispatch(readCurrentUser());
+        console.log(store.getState())
+
+    }
 
     render() {
+        // const { store } = this.context;
+        // const state = store.getState();
+
         return (
             <Grid stackable centered columns={1}>
 
@@ -49,7 +63,10 @@ export default class LandingPage extends Component {
                         <Image src={'https://firebasestorage.googleapis.com/v0/b/scriptup-5c4f7.appspot.com/o/images%2Fbackgrounds%2Fteam-bump.jpg?alt=media&token=c4a4a6d3-eb44-4925-a02d-3cb090992e2c'} size='medium' shape='circular' centered />
                     </Grid.Column>
                 </Grid.Row>
-          </Grid>
+            </Grid>
         )
     }
 }
+Home.contextTypes = {
+    store: React.PropTypes.object
+};

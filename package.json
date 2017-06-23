@@ -15,7 +15,10 @@
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
     "redux": "^3.6.0",
-    "semantic-ui-react": "^0.68.5"
+    "redux-promise": "^0.5.3",
+    "redux-thunk": "^2.2.0",
+    "semantic-ui-react": "^0.68.5",
+    "watson-developer-cloud": "^2.32.1"
   },
   "devDependencies": {
     "react-scripts": "0.9.5"

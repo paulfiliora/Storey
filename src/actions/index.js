@@ -1,17 +1,22 @@
-export const readAllUsers = () => {
-  return {
-    type: 'READ_ALL_USERS'
-  }
-}
-
 export const createNewUser = (username, email, password) => {
   return {
     type: 'CREATE_NEW_USER',
     username,
     email,
-    password    
+    password
   }
 }
+
+export const readCurrentUser = () => {
+  return {
+    type: 'READ_CURRENT_USER',
+  }
+}
+
+// simplified arrow functions
+export const readAllUsers = () => ({
+    type: 'READ_ALL_USERS'
+});
 
 export const loginUser = (email, password) => {
   return {
@@ -27,8 +32,4 @@ export const signOut = () => {
   }
 }
 
-export const readCurrentUser = () => {
-  return {
-    type: 'READ_CURRENT_USER',
-  }
-}
+// export const fetchUser = ()

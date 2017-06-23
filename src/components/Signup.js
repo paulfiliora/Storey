@@ -6,19 +6,29 @@ import { createNewUser } from '../actions'
 export default class SignUp extends Component {
 
     state = { username: '', email: '', password: '', submittedUsername: '', submittedEmail: '', submittedPassword: '' }
+    componentDidMount() {
+        const { store } = this.context;
+        this.unsubscribe = store.subscribe(() => this.forceUpdate()
+        );
+    }
+    componentWillUnmount() {
+        this.unsubscribe();
+    }
 
     handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
     handleSubmit = e => {
         e.preventDefault()
+        const { store } = this.context;
+
         const { username, email, password } = this.state
 
-        this.setState({  submittedUsername: username, submittedEmail: email, submittedPassword: password })
+        this.setState({ submittedUsername: username, submittedEmail: email, submittedPassword: password })
 
-        this.props.dispatch(createNewUser(
+        store.dispatch(createNewUser(
             username,
             email,
-            password            
+            password
         ));
     }
 
@@ -54,3 +64,7 @@ export default class SignUp extends Component {
         )
     }
 }
+
+SignUp.contextTypes = {
+    store: React.PropTypes.object
+};

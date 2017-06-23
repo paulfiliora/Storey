@@ -1,18 +1,23 @@
 import React, { Component } from 'react'
 import { Button, Dropdown, Menu, Modal } from 'semantic-ui-react'
 import LoginForm from './Login.js'
-import { readCurrentUser } from '../actions'
+// import { readCurrentUser } from '../actions'
 
 
 export default class NavBar extends Component {
 
   componentDidMount() {
-    // this.props.dispatch(readCurrentUser());
-    console.log('hey')
+    const { store } = this.context;
+    this.unsubscribe = store.subscribe(() => this.forceUpdate()
+    );
   }
 
+  componentWillUnmount() {
+    this.unsubscribe();
+  }
 
   render() {
+    const { store } = this.context;
 
     return (
       <Menu attached stackable inverted borderless={true} size='tiny'>
@@ -22,7 +27,7 @@ export default class NavBar extends Component {
         <Menu.Menu position='right'>
           <Menu.Item>
             <Modal trigger={<Button inverted>My Account</Button>} closeIcon='close'>
-              <LoginForm {...this.props} />
+              <LoginForm store={store} />
             </Modal>
           </Menu.Item>
         </Menu.Menu>
@@ -30,3 +35,7 @@ export default class NavBar extends Component {
     )
   }
 }
+
+NavBar.contextTypes = {
+    store: React.PropTypes.object
+};

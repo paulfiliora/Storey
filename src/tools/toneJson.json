@@ -1,0 +1,1183 @@
+{
+  "document_tone": {
+    "tone_categories": [
+      {
+        "tones": [
+          {
+            "score": 0.078972,
+            "tone_id": "anger",
+            "tone_name": "Anger"
+          },
+          {
+            "score": 0.094747,
+            "tone_id": "disgust",
+            "tone_name": "Disgust"
+          },
+          {
+            "score": 0.464362,
+            "tone_id": "fear",
+            "tone_name": "Fear"
+          },
+          {
+            "score": 0.565198,
+            "tone_id": "joy",
+            "tone_name": "Joy"
+          },
+          {
+            "score": 0.260893,
+            "tone_id": "sadness",
+            "tone_name": "Sadness"
+          }
+        ],
+        "category_id": "emotion_tone",
+        "category_name": "Emotion Tone"
+      },
+      {
+        "tones": [
+          {
+            "score": 0.065462,
+            "tone_id": "analytical",
+            "tone_name": "Analytical"
+          },
+          {
+            "score": 0,
+            "tone_id": "confident",
+            "tone_name": "Confident"
+          },
+          {
+            "score": 0.390266,
+            "tone_id": "tentative",
+            "tone_name": "Tentative"
+          }
+        ],
+        "category_id": "language_tone",
+        "category_name": "Language Tone"
+      },
+      {
+        "tones": [
+          {
+            "score": 0.865432,
+            "tone_id": "openness_big5",
+            "tone_name": "Openness"
+          },
+          {
+            "score": 0.173072,
+            "tone_id": "conscientiousness_big5",
+            "tone_name": "Conscientiousness"
+          },
+          {
+            "score": 0.048149,
+            "tone_id": "extraversion_big5",
+            "tone_name": "Extraversion"
+          },
+          {
+            "score": 0.191275,
+            "tone_id": "agreeableness_big5",
+            "tone_name": "Agreeableness"
+          },
+          {
+            "score": 0.362358,
+            "tone_id": "emotional_range_big5",
+            "tone_name": "Emotional Range"
+          }
+        ],
+        "category_id": "social_tone",
+        "category_name": "Social Tone"
+      }
+    ]
+  },
+  "sentences_tone": [
+    {
+      "sentence_id": 0,
+      "text": "Imagine a school in a castle filled with moving staircases, a sport played on flying broomsticks, an evil wizard intent on domination, an ordinary boy who’s the hero of a whole world he doesn’t know.",
+      "input_from": 0,
+      "input_to": 199,
+      "tone_categories": [
+        {
+          "tones": [
+            {
+              "score": 0.128158,
+              "tone_id": "anger",
+              "tone_name": "Anger"
+            },
+            {
+              "score": 0.215047,
+              "tone_id": "disgust",
+              "tone_name": "Disgust"
+            },
+            {
+              "score": 0.014445,
+              "tone_id": "fear",
+              "tone_name": "Fear"
+            },
+            {
+              "score": 0.470452,
+              "tone_id": "joy",
+              "tone_name": "Joy"
+            },
+            {
+              "score": 0.254874,
+              "tone_id": "sadness",
+              "tone_name": "Sadness"
+            }
+          ],
+          "category_id": "emotion_tone",
+          "category_name": "Emotion Tone"
+        },
+        {
+          "tones": [
+            {
+              "score": 0.677381,
+              "tone_id": "analytical",
+              "tone_name": "Analytical"
+            },
+            {
+              "score": 0,
+              "tone_id": "confident",
+              "tone_name": "Confident"
+            },
+            {
+              "score": 0,
+              "tone_id": "tentative",
+              "tone_name": "Tentative"
+            }
+          ],
+          "category_id": "language_tone",
+          "category_name": "Language Tone"
+        },
+        {
+          "tones": [
+            {
+              "score": 0.59127,
+              "tone_id": "openness_big5",
+              "tone_name": "Openness"
+            },
+            {
+              "score": 0.076319,
+              "tone_id": "conscientiousness_big5",
+              "tone_name": "Conscientiousness"
+            },
+            {
+              "score": 0.341101,
+              "tone_id": "extraversion_big5",
+              "tone_name": "Extraversion"
+            },
+            {
+              "score": 0.007223,
+              "tone_id": "agreeableness_big5",
+              "tone_name": "Agreeableness"
+            },
+            {
+              "score": 0.550035,
+              "tone_id": "emotional_range_big5",
+              "tone_name": "Emotional Range"
+            }
+          ],
+          "category_id": "social_tone",
+          "category_name": "Social Tone"
+        }
+      ]
+    },
+    {
+      "sentence_id": 1,
+      "text": "This is the story that comes to life in the marvelous Harry Potter series by J. K. Rowling.",
+      "input_from": 200,
+      "input_to": 291,
+      "tone_categories": [
+        {
+          "tones": [
+            {
+              "score": 0.065006,
+              "tone_id": "anger",
+              "tone_name": "Anger"
+            },
+            {
+              "score": 0.041212,
+              "tone_id": "disgust",
+              "tone_name": "Disgust"
+            },
+            {
+              "score": 0.056186,
+              "tone_id": "fear",
+              "tone_name": "Fear"
+            },
+            {
+              "score": 0.519375,
+              "tone_id": "joy",
+              "tone_name": "Joy"
+            },
+            {
+              "score": 0.346263,
+              "tone_id": "sadness",
+              "tone_name": "Sadness"
+            }
+          ],
+          "category_id": "emotion_tone",
+          "category_name": "Emotion Tone"
+        },
+        {
+          "tones": [
+            {
+              "score": 0,
+              "tone_id": "analytical",
+              "tone_name": "Analytical"
+            },
+            {
+              "score": 0,
+              "tone_id": "confident",
+              "tone_name": "Confident"
+            },
+            {
+              "score": 0,
+              "tone_id": "tentative",
+              "tone_name": "Tentative"
+            }
+          ],
+          "category_id": "language_tone",
+          "category_name": "Language Tone"
+        },
+        {
+          "tones": [
+            {
+              "score": 0.901508,
+              "tone_id": "openness_big5",
+              "tone_name": "Openness"
+            },
+            {
+              "score": 0.718277,
+              "tone_id": "conscientiousness_big5",
+              "tone_name": "Conscientiousness"
+            },
+            {
+              "score": 0.646939,
+              "tone_id": "extraversion_big5",
+              "tone_name": "Extraversion"
+            },
+            {
+              "score": 0.828249,
+              "tone_id": "agreeableness_big5",
+              "tone_name": "Agreeableness"
+            },
+            {
+              "score": 0.694055,
+              "tone_id": "emotional_range_big5",
+              "tone_name": "Emotional Range"
+            }
+          ],
+          "category_id": "social_tone",
+          "category_name": "Social Tone"
+        }
+      ]
+    },
+    {
+      "sentence_id": 2,
+      "text": "The Dark Lord, Voldemort, tried to murder Harry when he was just a baby—but he failed, killing Harry’s parents but leaving him with a lightning-bolt scar.",
+      "input_from": 292,
+      "input_to": 446,
+      "tone_categories": [
+        {
+          "tones": [
+            {
+              "score": 0.164119,
+              "tone_id": "anger",
+              "tone_name": "Anger"
+            },
+            {
+              "score": 0.131314,
+              "tone_id": "disgust",
+              "tone_name": "Disgust"
+            },
+            {
+              "score": 0.594641,
+              "tone_id": "fear",
+              "tone_name": "Fear"
+            },
+            {
+              "score": 0.001633,
+              "tone_id": "joy",
+              "tone_name": "Joy"
+            },
+            {
+              "score": 0.383483,
+              "tone_id": "sadness",
+              "tone_name": "Sadness"
+            }
+          ],
+          "category_id": "emotion_tone",
+          "category_name": "Emotion Tone"
+        },
+        {
+          "tones": [
+            {
+              "score": 0.007831,
+              "tone_id": "analytical",
+              "tone_name": "Analytical"
+            },
+            {
+              "score": 0,
+              "tone_id": "confident",
+              "tone_name": "Confident"
+            },
+            {
+              "score": 0.5538,
+              "tone_id": "tentative",
+              "tone_name": "Tentative"
+            }
+          ],
+          "category_id": "language_tone",
+          "category_name": "Language Tone"
+        },
+        {
+          "tones": [
+            {
+              "score": 0.350153,
+              "tone_id": "openness_big5",
+              "tone_name": "Openness"
+            },
+            {
+              "score": 0.008498,
+              "tone_id": "conscientiousness_big5",
+              "tone_name": "Conscientiousness"
+            },
+            {
+              "score": 0.066898,
+              "tone_id": "extraversion_big5",
+              "tone_name": "Extraversion"
+            },
+            {
+              "score": 0.374359,
+              "tone_id": "agreeableness_big5",
+              "tone_name": "Agreeableness"
+            },
+            {
+              "score": 0.262348,
+              "tone_id": "emotional_range_big5",
+              "tone_name": "Emotional Range"
+            }
+          ],
+          "category_id": "social_tone",
+          "category_name": "Social Tone"
+        }
+      ]
+    },
+    {
+      "sentence_id": 3,
+      "text": "After Voldemort’s disappearance, Harry is sent to live with his nasty aunt and uncle, far away from any hint of magic.",
+      "input_from": 447,
+      "input_to": 565,
+      "tone_categories": [
+        {
+          "tones": [
+            {
+              "score": 0.041867,
+              "tone_id": "anger",
+              "tone_name": "Anger"
+            },
+            {
+              "score": 0.445212,
+              "tone_id": "disgust",
+              "tone_name": "Disgust"
+            },
+            {
+              "score": 0.210642,
+              "tone_id": "fear",
+              "tone_name": "Fear"
+            },
+            {
+              "score": 0.015561,
+              "tone_id": "joy",
+              "tone_name": "Joy"
+            },
+            {
+              "score": 0.485878,
+              "tone_id": "sadness",
+              "tone_name": "Sadness"
+            }
+          ],
+          "category_id": "emotion_tone",
+          "category_name": "Emotion Tone"
+        },
+        {
+          "tones": [
+            {
+              "score": 0,
+              "tone_id": "analytical",
+              "tone_name": "Analytical"
+            },
+            {
+              "score": 0,
+              "tone_id": "confident",
+              "tone_name": "Confident"
+            },
+            {
+              "score": 0.471477,
+              "tone_id": "tentative",
+              "tone_name": "Tentative"
+            }
+          ],
+          "category_id": "language_tone",
+          "category_name": "Language Tone"
+        },
+        {
+          "tones": [
+            {
+              "score": 0.439467,
+              "tone_id": "openness_big5",
+              "tone_name": "Openness"
+            },
+            {
+              "score": 0.056854,
+              "tone_id": "conscientiousness_big5",
+              "tone_name": "Conscientiousness"
+            },
+            {
+              "score": 0.224456,
+              "tone_id": "extraversion_big5",
+              "tone_name": "Extraversion"
+            },
+            {
+              "score": 0.70559,
+              "tone_id": "agreeableness_big5",
+              "tone_name": "Agreeableness"
+            },
+            {
+              "score": 0.291051,
+              "tone_id": "emotional_range_big5",
+              "tone_name": "Emotional Range"
+            }
+          ],
+          "category_id": "social_tone",
+          "category_name": "Social Tone"
+        }
+      ]
+    },
+    {
+      "sentence_id": 4,
+      "text": "But at the age of eleven, he is invited to attend Hogwarts School of Witchcraft and Wizardry, and a magical world opens before him.",
+      "input_from": 566,
+      "input_to": 697,
+      "tone_categories": [
+        {
+          "tones": [
+            {
+              "score": 0.109755,
+              "tone_id": "anger",
+              "tone_name": "Anger"
+            },
+            {
+              "score": 0.144513,
+              "tone_id": "disgust",
+              "tone_name": "Disgust"
+            },
+            {
+              "score": 0.05973,
+              "tone_id": "fear",
+              "tone_name": "Fear"
+            },
+            {
+              "score": 0.536912,
+              "tone_id": "joy",
+              "tone_name": "Joy"
+            },
+            {
+              "score": 0.175218,
+              "tone_id": "sadness",
+              "tone_name": "Sadness"
+            }
+          ],
+          "category_id": "emotion_tone",
+          "category_name": "Emotion Tone"
+        },
+        {
+          "tones": [
+            {
+              "score": 0,
+              "tone_id": "analytical",
+              "tone_name": "Analytical"
+            },
+            {
+              "score": 0,
+              "tone_id": "confident",
+              "tone_name": "Confident"
+            },
+            {
+              "score": 0,
+              "tone_id": "tentative",
+              "tone_name": "Tentative"
+            }
+          ],
+          "category_id": "language_tone",
+          "category_name": "Language Tone"
+        },
+        {
+          "tones": [
+            {
+              "score": 0.449259,
+              "tone_id": "openness_big5",
+              "tone_name": "Openness"
+            },
+            {
+              "score": 0.517982,
+              "tone_id": "conscientiousness_big5",
+              "tone_name": "Conscientiousness"
+            },
+            {
+              "score": 0.034524,
+              "tone_id": "extraversion_big5",
+              "tone_name": "Extraversion"
+            },
+            {
+              "score": 0.064225,
+              "tone_id": "agreeableness_big5",
+              "tone_name": "Agreeableness"
+            },
+            {
+              "score": 0.660744,
+              "tone_id": "emotional_range_big5",
+              "tone_name": "Emotional Range"
+            }
+          ],
+          "category_id": "social_tone",
+          "category_name": "Social Tone"
+        }
+      ]
+    },
+    {
+      "sentence_id": 5,
+      "text": "Each of the seven books in the series chronicles one year in Harry’s adventures at Hogwarts and his battle against Lord Voldemort.",
+      "input_from": 698,
+      "input_to": 828,
+      "tone_categories": [
+        {
+          "tones": [
+            {
+              "score": 0.044384,
+              "tone_id": "anger",
+              "tone_name": "Anger"
+            },
+            {
+              "score": 0.012823,
+              "tone_id": "disgust",
+              "tone_name": "Disgust"
+            },
+            {
+              "score": 0.035469,
+              "tone_id": "fear",
+              "tone_name": "Fear"
+            },
+            {
+              "score": 0.460935,
+              "tone_id": "joy",
+              "tone_name": "Joy"
+            },
+            {
+              "score": 0.413151,
+              "tone_id": "sadness",
+              "tone_name": "Sadness"
+            }
+          ],
+          "category_id": "emotion_tone",
+          "category_name": "Emotion Tone"
+        },
+        {
+          "tones": [
+            {
+              "score": 0,
+              "tone_id": "analytical",
+              "tone_name": "Analytical"
+            },
+            {
+              "score": 0,
+              "tone_id": "confident",
+              "tone_name": "Confident"
+            },
+            {
+              "score": 0,
+              "tone_id": "tentative",
+              "tone_name": "Tentative"
+            }
+          ],
+          "category_id": "language_tone",
+          "category_name": "Language Tone"
+        },
+        {
+          "tones": [
+            {
+              "score": 0.702464,
+              "tone_id": "openness_big5",
+              "tone_name": "Openness"
+            },
+            {
+              "score": 0.642581,
+              "tone_id": "conscientiousness_big5",
+              "tone_name": "Conscientiousness"
+            },
+            {
+              "score": 0.127026,
+              "tone_id": "extraversion_big5",
+              "tone_name": "Extraversion"
+            },
+            {
+              "score": 0.543102,
+              "tone_id": "agreeableness_big5",
+              "tone_name": "Agreeableness"
+            },
+            {
+              "score": 0.65217,
+              "tone_id": "emotional_range_big5",
+              "tone_name": "Emotional Range"
+            }
+          ],
+          "category_id": "social_tone",
+          "category_name": "Social Tone"
+        }
+      ]
+    },
+    {
+      "sentence_id": 6,
+      "text": "Harry makes two marvelous best friends named Ron Weasley and Hermione Granger.",
+      "input_from": 829,
+      "input_to": 907,
+      "tone_categories": [
+        {
+          "tones": [
+            {
+              "score": 0.044275,
+              "tone_id": "anger",
+              "tone_name": "Anger"
+            },
+            {
+              "score": 0.067162,
+              "tone_id": "disgust",
+              "tone_name": "Disgust"
+            },
+            {
+              "score": 0.01775,
+              "tone_id": "fear",
+              "tone_name": "Fear"
+            },
+            {
+              "score": 0.673016,
+              "tone_id": "joy",
+              "tone_name": "Joy"
+            },
+            {
+              "score": 0.180728,
+              "tone_id": "sadness",
+              "tone_name": "Sadness"
+            }
+          ],
+          "category_id": "emotion_tone",
+          "category_name": "Emotion Tone"
+        },
+        {
+          "tones": [
+            {
+              "score": 0,
+              "tone_id": "analytical",
+              "tone_name": "Analytical"
+            },
+            {
+              "score": 0,
+              "tone_id": "confident",
+              "tone_name": "Confident"
+            },
+            {
+              "score": 0,
+              "tone_id": "tentative",
+              "tone_name": "Tentative"
+            }
+          ],
+          "category_id": "language_tone",
+          "category_name": "Language Tone"
+        },
+        {
+          "tones": [
+            {
+              "score": 0.497963,
+              "tone_id": "openness_big5",
+              "tone_name": "Openness"
+            },
+            {
+              "score": 0.319312,
+              "tone_id": "conscientiousness_big5",
+              "tone_name": "Conscientiousness"
+            },
+            {
+              "score": 0.821525,
+              "tone_id": "extraversion_big5",
+              "tone_name": "Extraversion"
+            },
+            {
+              "score": 0.679643,
+              "tone_id": "agreeableness_big5",
+              "tone_name": "Agreeableness"
+            },
+            {
+              "score": 0.484897,
+              "tone_id": "emotional_range_big5",
+              "tone_name": "Emotional Range"
+            }
+          ],
+          "category_id": "social_tone",
+          "category_name": "Social Tone"
+        }
+      ]
+    },
+    {
+      "sentence_id": 7,
+      "text": "He studies topics like Transfiguration and Potions under wise headmaster Albus Dumbledore and the malevolent Severus Snape.",
+      "input_from": 908,
+      "input_to": 1031,
+      "tone_categories": [
+        {
+          "tones": [
+            {
+              "score": 0.050579,
+              "tone_id": "anger",
+              "tone_name": "Anger"
+            },
+            {
+              "score": 0.017428,
+              "tone_id": "disgust",
+              "tone_name": "Disgust"
+            },
+            {
+              "score": 0.095368,
+              "tone_id": "fear",
+              "tone_name": "Fear"
+            },
+            {
+              "score": 0.703301,
+              "tone_id": "joy",
+              "tone_name": "Joy"
+            },
+            {
+              "score": 0.081286,
+              "tone_id": "sadness",
+              "tone_name": "Sadness"
+            }
+          ],
+          "category_id": "emotion_tone",
+          "category_name": "Emotion Tone"
+        },
+        {
+          "tones": [
+            {
+              "score": 0,
+              "tone_id": "analytical",
+              "tone_name": "Analytical"
+            },
+            {
+              "score": 0,
+              "tone_id": "confident",
+              "tone_name": "Confident"
+            },
+            {
+              "score": 0.236367,
+              "tone_id": "tentative",
+              "tone_name": "Tentative"
+            }
+          ],
+          "category_id": "language_tone",
+          "category_name": "Language Tone"
+        },
+        {
+          "tones": [
+            {
+              "score": 0.821601,
+              "tone_id": "openness_big5",
+              "tone_name": "Openness"
+            },
+            {
+              "score": 0.293595,
+              "tone_id": "conscientiousness_big5",
+              "tone_name": "Conscientiousness"
+            },
+            {
+              "score": 0.688178,
+              "tone_id": "extraversion_big5",
+              "tone_name": "Extraversion"
+            },
+            {
+              "score": 0.175844,
+              "tone_id": "agreeableness_big5",
+              "tone_name": "Agreeableness"
+            },
+            {
+              "score": 0.048807,
+              "tone_id": "emotional_range_big5",
+              "tone_name": "Emotional Range"
+            }
+          ],
+          "category_id": "social_tone",
+          "category_name": "Social Tone"
+        }
+      ]
+    },
+    {
+      "sentence_id": 8,
+      "text": "He becomes expert at a game called Quidditch; encounters incredible creatures like phoenixes and dragons; and discovers an entire Wizarding universe hidden just out of sight, as prone to the darker aspects of human experience as our own, but brightened by a quirky original magic.",
+      "input_from": 1032,
+      "input_to": 1312,
+      "tone_categories": [
+        {
+          "tones": [
+            {
+              "score": 0.11502,
+              "tone_id": "anger",
+              "tone_name": "Anger"
+            },
+            {
+              "score": 0.062312,
+              "tone_id": "disgust",
+              "tone_name": "Disgust"
+            },
+            {
+              "score": 0.044095,
+              "tone_id": "fear",
+              "tone_name": "Fear"
+            },
+            {
+              "score": 0.490511,
+              "tone_id": "joy",
+              "tone_name": "Joy"
+            },
+            {
+              "score": 0.333656,
+              "tone_id": "sadness",
+              "tone_name": "Sadness"
+            }
+          ],
+          "category_id": "emotion_tone",
+          "category_name": "Emotion Tone"
+        },
+        {
+          "tones": [
+            {
+              "score": 0.322721,
+              "tone_id": "analytical",
+              "tone_name": "Analytical"
+            },
+            {
+              "score": 0,
+              "tone_id": "confident",
+              "tone_name": "Confident"
+            },
+            {
+              "score": 0.136951,
+              "tone_id": "tentative",
+              "tone_name": "Tentative"
+            }
+          ],
+          "category_id": "language_tone",
+          "category_name": "Language Tone"
+        },
+        {
+          "tones": [
+            {
+              "score": 0.981192,
+              "tone_id": "openness_big5",
+              "tone_name": "Openness"
+            },
+            {
+              "score": 0.107538,
+              "tone_id": "conscientiousness_big5",
+              "tone_name": "Conscientiousness"
+            },
+            {
+              "score": 0.23138,
+              "tone_id": "extraversion_big5",
+              "tone_name": "Extraversion"
+            },
+            {
+              "score": 0.093579,
+              "tone_id": "agreeableness_big5",
+              "tone_name": "Agreeableness"
+            },
+            {
+              "score": 0.29281,
+              "tone_id": "emotional_range_big5",
+              "tone_name": "Emotional Range"
+            }
+          ],
+          "category_id": "social_tone",
+          "category_name": "Social Tone"
+        }
+      ]
+    },
+    {
+      "sentence_id": 9,
+      "text": "And slowly, Harry unravels the mysteries of his original confrontation with Voldemort: why the Dark Lord tried to kill him, how he lived… and what he must do to survive another encounter.",
+      "input_from": 1313,
+      "input_to": 1500,
+      "tone_categories": [
+        {
+          "tones": [
+            {
+              "score": 0.195641,
+              "tone_id": "anger",
+              "tone_name": "Anger"
+            },
+            {
+              "score": 0.109122,
+              "tone_id": "disgust",
+              "tone_name": "Disgust"
+            },
+            {
+              "score": 0.434557,
+              "tone_id": "fear",
+              "tone_name": "Fear"
+            },
+            {
+              "score": 0.013103,
+              "tone_id": "joy",
+              "tone_name": "Joy"
+            },
+            {
+              "score": 0.449925,
+              "tone_id": "sadness",
+              "tone_name": "Sadness"
+            }
+          ],
+          "category_id": "emotion_tone",
+          "category_name": "Emotion Tone"
+        },
+        {
+          "tones": [
+            {
+              "score": 0.004834,
+              "tone_id": "analytical",
+              "tone_name": "Analytical"
+            },
+            {
+              "score": 0,
+              "tone_id": "confident",
+              "tone_name": "Confident"
+            },
+            {
+              "score": 0.058593,
+              "tone_id": "tentative",
+              "tone_name": "Tentative"
+            }
+          ],
+          "category_id": "language_tone",
+          "category_name": "Language Tone"
+        },
+        {
+          "tones": [
+            {
+              "score": 0.85172,
+              "tone_id": "openness_big5",
+              "tone_name": "Openness"
+            },
+            {
+              "score": 0.304402,
+              "tone_id": "conscientiousness_big5",
+              "tone_name": "Conscientiousness"
+            },
+            {
+              "score": 0.008289,
+              "tone_id": "extraversion_big5",
+              "tone_name": "Extraversion"
+            },
+            {
+              "score": 0.436404,
+              "tone_id": "agreeableness_big5",
+              "tone_name": "Agreeableness"
+            },
+            {
+              "score": 0.449891,
+              "tone_id": "emotional_range_big5",
+              "tone_name": "Emotional Range"
+            }
+          ],
+          "category_id": "social_tone",
+          "category_name": "Social Tone"
+        }
+      ]
+    },
+    {
+      "sentence_id": 10,
+      "text": "The first Harry Potter book, Harry Potter and the Sorcerer's Stone, was published in the United Kingdom in 1997; a decade later, the last novel, Harry Potter and the Deathly Hallows, broke all records to become the fastest-selling book in history.",
+      "input_from": 1501,
+      "input_to": 1748,
+      "tone_categories": [
+        {
+          "tones": [
+            {
+              "score": 0.113365,
+              "tone_id": "anger",
+              "tone_name": "Anger"
+            },
+            {
+              "score": 0.041344,
+              "tone_id": "disgust",
+              "tone_name": "Disgust"
+            },
+            {
+              "score": 0.093969,
+              "tone_id": "fear",
+              "tone_name": "Fear"
+            },
+            {
+              "score": 0.420425,
+              "tone_id": "joy",
+              "tone_name": "Joy"
+            },
+            {
+              "score": 0.35466,
+              "tone_id": "sadness",
+              "tone_name": "Sadness"
+            }
+          ],
+          "category_id": "emotion_tone",
+          "category_name": "Emotion Tone"
+        },
+        {
+          "tones": [
+            {
+              "score": 0.002279,
+              "tone_id": "analytical",
+              "tone_name": "Analytical"
+            },
+            {
+              "score": 0.323112,
+              "tone_id": "confident",
+              "tone_name": "Confident"
+            },
+            {
+              "score": 0,
+              "tone_id": "tentative",
+              "tone_name": "Tentative"
+            }
+          ],
+          "category_id": "language_tone",
+          "category_name": "Language Tone"
+        },
+        {
+          "tones": [
+            {
+              "score": 0.741818,
+              "tone_id": "openness_big5",
+              "tone_name": "Openness"
+            },
+            {
+              "score": 0.395724,
+              "tone_id": "conscientiousness_big5",
+              "tone_name": "Conscientiousness"
+            },
+            {
+              "score": 0.168083,
+              "tone_id": "extraversion_big5",
+              "tone_name": "Extraversion"
+            },
+            {
+              "score": 0.351432,
+              "tone_id": "agreeableness_big5",
+              "tone_name": "Agreeableness"
+            },
+            {
+              "score": 0.353393,
+              "tone_id": "emotional_range_big5",
+              "tone_name": "Emotional Range"
+            }
+          ],
+          "category_id": "social_tone",
+          "category_name": "Social Tone"
+        }
+      ]
+    },
+    {
+      "sentence_id": 11,
+      "text": "The seven novels have been translated into sixty-eight languages, selling over four hundred million copies in more than two hundred countries.",
+      "input_from": 1749,
+      "input_to": 1891,
+      "tone_categories": [
+        {
+          "tones": [
+            {
+              "score": 0.035776,
+              "tone_id": "anger",
+              "tone_name": "Anger"
+            },
+            {
+              "score": 0.038229,
+              "tone_id": "disgust",
+              "tone_name": "Disgust"
+            },
+            {
+              "score": 0.147968,
+              "tone_id": "fear",
+              "tone_name": "Fear"
+            },
+            {
+              "score": 0.102413,
+              "tone_id": "joy",
+              "tone_name": "Joy"
+            },
+            {
+              "score": 0.20678,
+              "tone_id": "sadness",
+              "tone_name": "Sadness"
+            }
+          ],
+          "category_id": "emotion_tone",
+          "category_name": "Emotion Tone"
+        },
+        {
+          "tones": [
+            {
+              "score": 0,
+              "tone_id": "analytical",
+              "tone_name": "Analytical"
+            },
+            {
+              "score": 0,
+              "tone_id": "confident",
+              "tone_name": "Confident"
+            },
+            {
+              "score": 0,
+              "tone_id": "tentative",
+              "tone_name": "Tentative"
+            }
+          ],
+          "category_id": "language_tone",
+          "category_name": "Language Tone"
+        },
+        {
+          "tones": [
+            {
+              "score": 0.639039,
+              "tone_id": "openness_big5",
+              "tone_name": "Openness"
+            },
+            {
+              "score": 0.282771,
+              "tone_id": "conscientiousness_big5",
+              "tone_name": "Conscientiousness"
+            },
+            {
+              "score": 0.450241,
+              "tone_id": "extraversion_big5",
+              "tone_name": "Extraversion"
+            },
+            {
+              "score": 0.578262,
+              "tone_id": "agreeableness_big5",
+              "tone_name": "Agreeableness"
+            },
+            {
+              "score": 0.304773,
+              "tone_id": "emotional_range_big5",
+              "tone_name": "Emotional Range"
+            }
+          ],
+          "category_id": "social_tone",
+          "category_name": "Social Tone"
+        }
+      ]
+    }
+  ]
+}

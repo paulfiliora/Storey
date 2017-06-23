@@ -31,3 +31,6 @@ export default class Footer extends Component {
         )
     }
 }
+
+// export const Footer = () => {
+// }

@@ -13,7 +13,6 @@ firebase.initializeApp(config);
 const database = firebase.database();
 const auth = firebase.auth()
 
-
 // export const writePsetData = () => {
 //   // const newUserRef = database.ref('users').push();
 //   // const newUserKey = newUserRef.key;
@@ -57,9 +56,9 @@ const createUserWithEmailAndPassword = (username, email, password) => {
       return authData.updateProfile({
         displayName: userData.displayName
       }).then((res => {
-          const user = auth.currentUser;
-          return writeUserData(user.uid, user.displayName, user.email)
-        }))
+        const user = auth.currentUser;
+        return writeUserData(user.uid, user.displayName, user.email)
+      }))
         .then((res => {
           const user = auth.currentUser;
           return user.sendEmailVerification()
@@ -80,15 +79,42 @@ const signInWithEmailAndPassword = (email, password) => {
     .then((authData) => {
       console.log('signed in: ', authData)
       return authData
+    }).then(() => {
+      return auth.onAuthStateChanged(user => {
+        if (user) {
+          window.location = '/UserPage';
+        }
+      });
     }).catch((err) => {
       console.log('Login Failed: ', err);
       return err
     })
 }
 
+// const toggleTodo = (todo) => {
+//   return Object.assign({}, todo, {
+//     completed: !todo.completed
+//   });
+// };
+
+// const toggleTodo = (todo) => {
+//   return {
+//     ...todo,
+//     completed: !todo.completed
+//   };
+// };
+
+
+
 const signOut = () => {
   return auth.signout().then((data) => {
     return data
+  }).then(() => {
+    return auth.onAuthStateChanged(user => {
+      if (!user) {
+        window.location = '/';
+      }
+    });
   }).catch((err) => {
     console.log('Signout failed: ', err)
     return err
@@ -105,22 +131,23 @@ const deleteAccount = () => {
   })
 }
 
-// export const writePsetData = () => {
+// export const writePsetData = () => {}
 
-export const readAllUsers = (state = {}, action) => {
-const user = firebase.auth().currentUser;
+const readAllUsers = (state = {}, action) => {
+  const user = firebase.auth().currentUser;
 
-if (user != null) {
-  return user.providerData.forEach(function (profile) {
-    console.log("Sign-in provider: "+profile.providerId);
-    console.log("  Provider-specific UID: "+profile.uid);
-    console.log("  Name: "+profile.displayName);
-    console.log("  Email: "+profile.email);
-    console.log("  Photo URL: "+profile.photoURL);
-  });
-} else {
-  return console.log('No user signed in')
-}
+  if (user != null) {
+    return user.providerData.map(function (profile) {
+      console.log(" Sign-in provider: " + profile.providerId);
+      console.log(" Provider-specific UID: " + profile.uid);
+      console.log(" Name: " + profile.displayName);
+      console.log(" Email: " + profile.email);
+      console.log(" Photo URL: " + profile.photoURL)
+;
+    });
+  } else {
+    return console.log('No user signed in')
+  }
 
   // return database.ref('/users').once('value').then(function (snapshot) {
   //   console.log(snapshot.val());
@@ -128,29 +155,41 @@ if (user != null) {
 }
 
 
-export const readCurrentUser = (state = {}, action) => {
 
-  const user = firebase.auth().currentUser;
-    return database.ref('/users/' + user.uid).once('value').then(function (snapshot) {
-      return snapshot.val().psets
-  }).then((psets) => {
-    return database.ref('/psets/' + psets).once('value').then(function (snapshot){
-      console.log(snapshot.val())
-    })
-  })
+const readCurrentUser = (state) => {
+  console.log('in the right one')
 
-.catch((err) => {
-    console.log('error ', err);
-    return err
-  })
+    // firebase.auth().onAuthStateChanged(function (user) {
+    //   if (user) {
+    //     console.log(user.displayName)
+        return Object.assign({}, state, {
+        user: [
+          ...state.user,
+          {
+            name: 'user.displayName',
+          }
+        ]
+      })
+    } 
+    // else {
+        // console.log('no user logged in')
+      // }
+    // }
+    // , function (error) {
+//     })
+// }
+
+const initialState = {
+  user: [],
+  books: []
 }
 
-const firebaseDB = (state = [], action) => {
+const firebaseDB = (state = initialState, action) => {
   switch (action.type) {
     case 'READ_ALL_USERS':
       return readAllUsers()
     case 'READ_CURRENT_USER':
-      return readCurrentUser()
+      return readCurrentUser(state, action)
     case 'CREATE_NEW_USER':
       return createUserWithEmailAndPassword(action.username, action.email, action.password)
     case 'LOGIN_USER':
@@ -168,6 +207,13 @@ export default firebaseDB
 
 
 
+  // return database.ref('/users/' + user.uid).once('value').then(function (snapshot) {
+  //   return snapshot.val().psets
+  // }).then((psets) => {
+  //   return database.ref('/psets/' + psets).once('value').then(function (snapshot) {
+  //     console.log(snapshot.val())
+  //   })
+  // })
 
 
 // const todo = (state = {}, action) => {
