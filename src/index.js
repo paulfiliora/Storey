@@ -6,16 +6,21 @@ import App from './components/App'
 import configureStore from './tools/configureStore'
 import './index.css';
 
-let initialState = {
-  book: [],
-  user:[]
-}
+import {getInitialState} from './reducers/firebase';
 
-const store = configureStore(initialState)
-// console.log(store.getState())
-render(
-  <Provider store={store}>
-    <App/>
-  </Provider>,
-  document.getElementById('root')
-)
+// let initialState = {
+//   book: [],
+//   user:[]
+// }
+
+getInitialState().then(snap => {
+  const store = configureStore();
+  render(
+    <Provider store={store}>
+      <App/>
+    </Provider>,
+    document.getElementById('root')
+  )
+})
+
+

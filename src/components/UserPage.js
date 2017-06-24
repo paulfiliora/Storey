@@ -14,7 +14,6 @@ export default class UserPage extends Component {
         const { store } = this.context;
         this.unsubscribe = store.subscribe(() => this.forceUpdate()
         );
-        // console.log(store.getState())
     }
 
     componentWillUnmount() {
@@ -26,7 +25,7 @@ export default class UserPage extends Component {
         const { store } = this.context;
         // store.dispatch(writeInChapter())
         // store.getState()
-        console.log(store.getState())
+        // console.log(store.getState())
     }
 
 

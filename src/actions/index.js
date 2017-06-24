@@ -64,7 +64,6 @@ export const writeInChapter = (text) => {
   return dispatch => {
     return new Promise((resolve) => {
       setTimeout(() => {
-        console.log(text)
         dispatch({
     type: 'UPDATE_CHAPTER_TEXT',
     text,

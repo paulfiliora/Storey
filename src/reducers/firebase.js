@@ -17,9 +17,10 @@ const auth = firebase.auth();
 //***************Database Logic ******************/
 //*************************************************/
 
+
 const testFunction = (state) => {
   // const fetchBookData = (state) => {
-  console.log(state.book)
+  // console.log(state.book)
   const user = firebase.auth().currentUser;
   // console.log(user)
   // return state
@@ -108,13 +109,13 @@ const writeNewChapter = (title) => {
 }
 
 const writeInChapter = (text) => {
-  console.log('in the reducer')
+  // console.log('in the reducer')
     // console.log(text)
 
   const bookId = '-KnLjyje2E3iy_1ircEG'
-  const chapterId = '-KnN4ARKzmpNZQvppxfn'
+  const chapterId = '-KnN1rmnHZWll8QQBafy'
   return database.ref('books/' + bookId + '/chapters/' + chapterId).set({
-    title: '3 Test',
+    title: '1 Intro',
     text
   }).catch((err) => {
     console.log('Push to DB Failed: ', err);
@@ -211,8 +212,16 @@ const deleteAccount = () => {
   })
 }
 
+let initialState = [];
+export const getInitialState = () => {
+  return database.ref('/').once('value').then(snap => {
+    initialState = snap.val();
 
-const firebaseDB = (state = [], action) => {
+    return initialState;
+  });
+}
+
+const firebaseDB = (state = initialState, action) => {
   switch (action.type) {
     case 'CREATE_NEW_USER':
       return createUserWithEmailAndPassword(action.username, action.email, action.password)
@@ -236,6 +245,9 @@ const firebaseDB = (state = [], action) => {
 }
 
 export default firebaseDB
+
+
+
 
 
 

@@ -1,8 +1,17 @@
 import React, { Component } from 'react'
 import { Segment, Progress, Header } from 'semantic-ui-react'
+// var jsonData = require('../tools/toneJson.json');
+
 
 export default class WhatsonTone extends Component {
-    
+    componentDidMount() {
+        // fetch('../tools/toneWatson.json')
+        //     .then((res) => res.json())
+        //     .then((data) => {
+        //         console.log('data:', data);
+        //     })
+    }
+
     render() {
 
         return (
@@ -10,19 +19,19 @@ export default class WhatsonTone extends Component {
                 <Header>Tone Analyzer</Header>
                 <Progress percent={11} active size='tiny' color='pink'>
                     Anger
-                            </Progress>
+                </Progress>
                 <Progress percent={20} active size='tiny' color='violet'>
                     Disgust
-                            </Progress>
+                </Progress>
                 <Progress percent={55} active size='tiny' color='olive'>
                     Fear
-                            </Progress>
+                </Progress>
                 <Progress percent={65} active size='tiny' color='yellow'>
                     Joy
-                            </Progress>
+                </Progress>
                 <Progress percent={30} active size='tiny' color='blue'>
                     Sadness
-                            </Progress>
+                </Progress>
             </Segment>
         )
     }

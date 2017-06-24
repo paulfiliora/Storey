@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Grid, Image, Header, Icon, Divider } from 'semantic-ui-react'
-
+// import {app} from '../tools/express'
 // import { itemsHasErrored } from '../actions'
 
 export default class Home extends Component {

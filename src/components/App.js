@@ -14,7 +14,7 @@ let App = () => (
   <Router history={browserHistory}>
 
     <div>
-      <Navbar />
+      <Route exact path="/" component={() => <Navbar />} />
 
       <Route exact path="/" component={() => <Home />} />
 
