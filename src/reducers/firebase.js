@@ -13,29 +13,9 @@ firebase.initializeApp(config);
 const database = firebase.database();
 const auth = firebase.auth()
 
-
-const writeUserData = (userId, username, email) => {
-  return database.ref('users/' + userId).set({
-    username,
-    email
-  }).catch((err) => {
-    console.log('Push to DB Failed: ', err);
-    return err
-  })
-}
-
-// const writeBookData = (bookId, chapterIndex, name, title, text) => {
-//   return database.ref('book/' + bookId).set({
-//     name,
-//     chapters:[{ need something to target the right number
-// title,
-// text,
-// }]
-//   }).catch((err) => {
-//     console.log('Push to DB Failed: ', err);
-//     return err
-//   })
-// }
+//*************************************************/
+//***************User Auth Logic ******************/
+//*************************************************/
 
 const createUserWithEmailAndPassword = (username, email, password) => {
   return auth.createUserWithEmailAndPassword(email, password)
@@ -72,59 +52,6 @@ const createUserWithEmailAndPassword = (username, email, password) => {
     })
 }
 
-
-const signInWithEmailAndPassword = (email, password) => {
-  return auth.signInWithEmailAndPassword(email, password)
-    .then((authData) => {
-      console.log('signed in: ', authData)
-      return authData
-    }).then(() => {
-      return auth.onAuthStateChanged(user => {
-        if (user) {
-          window.location = '/UserPage';
-        }
-      });
-    }).catch((err) => {
-      console.log('Login Failed: ', err);
-      return err
-    })
-}
-
-const testFunction = (state) => {
-  // const fetchBookData = (state) => {
-  console.log(state.book)
-  const user = firebase.auth().currentUser;
-  // console.log(user)
-  // return state
-
-  return database.ref('/users/' + user.uid).once('value').then(function (snapshot) {
-    return snapshot.val().book
-  }).then((book) => {
-    return database.ref('/books/' + book).once('value').then(function (snapshot) {
-      return snapshot.val()
-    })
-  })
-  .then((bookData) => {
-    console.log('Book data: ', bookData)
-    return Object.assign({}, state, {
-      book: [
-        ...state,
-        {
-          title: 'title'
-        }
-      ]
-    })
-  }).then((state) => {
-    console.log(state)
-    return state
-  })
-  .catch((err) => {
-    console.log('Book data into state failed: ', err);
-    return err
-  })
-}
-
-
 const signOut = () => {
   return auth.signout().then((data) => {
     return data
@@ -149,6 +76,87 @@ const deleteAccount = () => {
     return err
   })
 }
+
+const signInWithEmailAndPassword = (email, password) => {
+  return auth.signInWithEmailAndPassword(email, password)
+    .then((authData) => {
+      console.log('signed in: ', authData)
+      return authData
+    }).then(() => {
+      return auth.onAuthStateChanged(user => {
+        if (user) {
+          window.location = '/UserPage';
+        }
+      });
+    }).catch((err) => {
+      console.log('Login Failed: ', err);
+      return err
+    })
+}
+
+//*************************************************/
+//***************Database Logic ******************/
+//*************************************************/
+
+const writeUserData = (userId, username, email) => {
+  return database.ref('users/' + userId).set({
+    username,
+    email
+  }).catch((err) => {
+    console.log('Push to DB Failed: ', err);
+    return err
+  })
+}
+
+// const writeBookData = (bookId, chapterIndex, name, title, text) => {
+//   return database.ref('book/' + bookId).set({
+//     name,
+//     chapters:[{ need something to target the right number
+// title,
+// text,
+// }]
+//   }).catch((err) => {
+//     console.log('Push to DB Failed: ', err);
+//     return err
+//   })
+// }
+
+
+const testFunction = (state) => {
+  // const fetchBookData = (state) => {
+  console.log(state.book)
+  const user = firebase.auth().currentUser;
+  // console.log(user)
+  // return state
+
+  return database.ref('/users/' + user.uid).once('value').then(function (snapshot) {
+    return snapshot.val().book
+  }).then((book) => {
+    return database.ref('/books/' + book).once('value').then(function (snapshot) {
+      return snapshot.val()
+    })
+  })
+    .then((bookData) => {
+      console.log('Book data: ', bookData)
+      return Object.assign({}, state, {
+        book: [
+          ...state,
+          {
+            title: 'title'
+          }
+        ]
+      })
+    }).then((state) => {
+      console.log(state)
+      return state
+    })
+    .catch((err) => {
+      console.log('Book data into state failed: ', err);
+      return err
+    })
+}
+
+
 
 const readCurrentUser = (state) => {
 
