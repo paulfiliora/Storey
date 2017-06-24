@@ -4,27 +4,21 @@
 
 
 const storeAnalysis = (state) => {
-      console.log('Book data: ', bookData)
-      return Object.assign({}, state, {
-        toneAnalysis: [
-          ...state,
-          {
-            toneAnalysis: 'title'
-          }
-        ]
-      })
+  console.log('Tone data: ')
+  return Object.assign({}, state, {
+    toneAnalysis: [
+      ...state,
+      {
+        toneAnalysis: ''
+      }
+    ]
+  })
 }
 
-let initialState = [];
-export const getInitialState = () => {
-  return database.ref('/').once('value').then(snap => {
-    initialState = snap.val();
+// let initialState = [toneAnalysis = []];
 
-    return initialState;
-  });
-}
 
-const watson = (state = initialState, action) => {
+const watson = (state = [], action) => {
   switch (action.type) {
     case 'STORE_ANALYSIS':
       return storeAnalysis(action.JSON)
