@@ -7,6 +7,9 @@ A webapp for writing books along with tools to assist like emotional analysis an
 ## Clone Project
 ``$ git clone [this_repo] && cd [this_repo]``
 
+## Install Modules
+``npm install``
+
 ## Run
 ``npm start``
 
