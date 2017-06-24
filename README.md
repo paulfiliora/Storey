@@ -1,6 +1,6 @@
 
-# Storey: 
-store your stories, turbo charge your writing process, share with the world.
+# Storey: store your stories
+Turbo charge your writing process & share with the world.
 A webapp for writing books along with tools to assist like emotional analysis and voice dictation writing.
 
 # Installation Instructions
