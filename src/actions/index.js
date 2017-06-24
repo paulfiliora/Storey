@@ -33,7 +33,9 @@ export const signOut = () => {
   }
 }
 
-export const getUsersBook = () => {
+
+
+export const getBook = () => {
   return dispatch => {
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -62,8 +64,9 @@ export const writeInChapter = (text) => {
   return dispatch => {
     return new Promise((resolve) => {
       setTimeout(() => {
+        console.log(text)
         dispatch({
-    type: 'LOGIN_USER',
+    type: 'UPDATE_CHAPTER_TEXT',
     text,
         });
       }, 500);

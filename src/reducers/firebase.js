@@ -14,6 +14,115 @@ const database = firebase.database();
 const auth = firebase.auth();
 
 //*************************************************/
+//***************Database Logic ******************/
+//*************************************************/
+
+const testFunction = (state) => {
+  // const fetchBookData = (state) => {
+  console.log(state.book)
+  const user = firebase.auth().currentUser;
+  // console.log(user)
+  // return state
+
+  return database.ref('/users/' + user.uid).once('value').then(function (snapshot) {
+    return snapshot.val().book
+  }).then((book) => {
+    return database.ref('/books/' + book).once('value').then(function (snapshot) {
+      return snapshot.val()
+    })
+  })
+    .then((bookData) => {
+      console.log('Book data: ', bookData)
+      return Object.assign({}, state, {
+        book: [
+          ...state,
+          {
+            title: 'title'
+          }
+        ]
+      })
+    }).then((state) => {
+      console.log(state)
+      return state
+    })
+    .catch((err) => {
+      console.log('Book data into state failed: ', err);
+      return err
+    })
+}
+
+const getUsersBook = (state) => {
+  // const fetchBookData = (state) => {
+  // console.log(state)
+  const user = firebase.auth().currentUser;
+  // console.log(user)
+  // return state
+
+  return database.ref('/users/' + user.uid).once('value').then(function (snapshot) {
+    return snapshot.val().book
+  }).then((book) => {
+    return database.ref('/books/' + book).once('value').then(function (snapshot) {
+      console.log(snapshot.val())
+      return snapshot.val()
+    })
+  })
+    // .then((bookData) => {
+    //   console.log('Book data: ', bookData)
+    //   return Object.assign({}, state, {
+    //     book: [
+    //       ...state,
+    //       {
+    //         title: 'title'
+    //       }
+    //     ]
+    //   })
+    // }).then((state) => {
+    //   console.log(state)
+    //   return state
+    // })
+    .catch((err) => {
+      console.log('Book data into state failed: ', err);
+      return err
+    })
+}
+
+const writeUserData = (userId, username, email) => {
+  return database.ref('users/' + userId).set({
+    username,
+    email
+  }).catch((err) => {
+    console.log('Push to DB Failed: ', err);
+    return err
+  })
+}
+
+const writeNewChapter = (title) => {
+  const bookId = '-KnLjyje2E3iy_1ircEG'
+  return database.ref('books/' + bookId + '/chapters').push({
+    title: '',
+    text: ``
+  }).catch((err) => {
+    console.log('Push to DB Failed: ', err);
+    return err
+  })
+}
+
+const writeInChapter = (text) => {
+  console.log('in the reducer')
+    // console.log(text)
+
+  const bookId = '-KnLjyje2E3iy_1ircEG'
+  const chapterId = '-KnN4ARKzmpNZQvppxfn'
+  return database.ref('books/' + bookId + '/chapters/' + chapterId).set({
+    title: '3 Test',
+    text
+  }).catch((err) => {
+    console.log('Push to DB Failed: ', err);
+    return err
+  })
+}
+
+//*************************************************/
 //***************User Auth Logic ******************/
 //*************************************************/
 
@@ -102,89 +211,6 @@ const deleteAccount = () => {
   })
 }
 
-//*************************************************/
-//***************Database Logic ******************/
-//*************************************************/
-
-const testFunction = (state) => {
-  // const fetchBookData = (state) => {
-  console.log(state.book)
-  const user = firebase.auth().currentUser;
-  // console.log(user)
-  // return state
-
-  return database.ref('/users/' + user.uid).once('value').then(function (snapshot) {
-    return snapshot.val().book
-  }).then((book) => {
-    return database.ref('/books/' + book).once('value').then(function (snapshot) {
-      return snapshot.val()
-    })
-  })
-    .then((bookData) => {
-      console.log('Book data: ', bookData)
-      return Object.assign({}, state, {
-        book: [
-          ...state,
-          {
-            title: 'title'
-          }
-        ]
-      })
-    }).then((state) => {
-      console.log(state)
-      return state
-    })
-    .catch((err) => {
-      console.log('Book data into state failed: ', err);
-      return err
-    })
-}
-
-const getUsersBook = (state) => {
-  // const fetchBookData = (state) => {
-  // console.log(state)
-  const user = firebase.auth().currentUser;
-  // console.log(user)
-  // return state
-
-  return database.ref('/users/' + user.uid).once('value').then(function (snapshot) {
-    return snapshot.val().book
-  }).then((book) => {
-    return database.ref('/books/' + book).once('value').then(function (snapshot) {
-      console.log(snapshot.val())
-      return snapshot.val()
-    })
-  })
-    // .then((bookData) => {
-    //   console.log('Book data: ', bookData)
-    //   return Object.assign({}, state, {
-    //     book: [
-    //       ...state,
-    //       {
-    //         title: 'title'
-    //       }
-    //     ]
-    //   })
-    // }).then((state) => {
-    //   console.log(state)
-    //   return state
-    // })
-    .catch((err) => {
-      console.log('Book data into state failed: ', err);
-      return err
-    })
-}
-
-const writeUserData = (userId, username, email) => {
-  return database.ref('users/' + userId).set({
-    username,
-    email
-  }).catch((err) => {
-    console.log('Push to DB Failed: ', err);
-    return err
-  })
-}
-
 
 const firebaseDB = (state = [], action) => {
   switch (action.type) {
@@ -199,13 +225,21 @@ const firebaseDB = (state = [], action) => {
     case 'TEST_REDUCER':
       return testFunction(state)
     case 'GET_BOOK':
-      return getUsersBook(state)    
+      return getUsersBook(state)
+    case 'NEW_CHAPTER':
+      return writeNewChapter(action.title)
+    case 'UPDATE_CHAPTER_TEXT':
+      return writeInChapter(action.text)
     default:
       return state
   }
 }
 
 export default firebaseDB
+
+
+
+
 
 
 //*************************************************/

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 // import { connect } from 'react-redux'
 import { Sidebar, Segment, Button, Menu } from 'semantic-ui-react'
 // import CodeEditor from '../containers/codeEditor'
-import { getUsersBook } from '../actions'
 import BooksPanel from './UserPageBooksPanel'
 import ChapterTabs from './UserPageChapterTabs'
 import WhatsonTone from './WatsonTone'
@@ -15,7 +14,7 @@ export default class UserPage extends Component {
         const { store } = this.context;
         this.unsubscribe = store.subscribe(() => this.forceUpdate()
         );
-        console.log(store.getState())
+        // console.log(store.getState())
     }
 
     componentWillUnmount() {
@@ -25,6 +24,7 @@ export default class UserPage extends Component {
     toggleVisibility = () => this.setState({ visible: !this.state.visible })
     handleTestClick = () => {
         const { store } = this.context;
+        // store.dispatch(writeInChapter())
         // store.getState()
         console.log(store.getState())
     }

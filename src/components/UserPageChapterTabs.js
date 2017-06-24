@@ -1,15 +1,41 @@
 import React, { Component } from 'react'
 import { Menu, Segment, Header, Form, TextArea, Button } from 'semantic-ui-react'
 import ToneAnalyzerV3 from 'watson-developer-cloud/tone-analyzer/v3'
+import { writeInChapter } from '../actions'
+
 
 export default class ChapterTabs extends Component {
-    state = { activeItem: '1. Intro' }
+    state = { activeItem: '1. Intro', text: '', submittedText: '' }
 
     componentDidMount() {
-        // console.log(ToneAnalyzerV3)
+        const { store } = this.context;
+        this.unsubscribe = store.subscribe(() => this.forceUpdate()
+        );
     }
 
+    componentWillUnmount() {
+        this.unsubscribe();
+    }
+
+    handleChange = (e, { name, value }) => this.setState({ [name]: value })
+
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
+    handleSave = e => {
+        e.preventDefault()
+
+        const { store } = this.context;
+
+        const { text } = this.state
+
+        this.setState({ submittedText: text })
+
+        console.log(this.state)
+
+        store.dispatch(writeInChapter(
+            text,
+        ));
+    }
 
     handleAnalyzerClick(e) {
         e.preventDefault();
@@ -62,14 +88,14 @@ export default class ChapterTabs extends Component {
     }
 
     render() {
-        let chapter1 = `"Imagine a school in a castle filled with moving staircases, a sport played on flying broomsticks, an evil wizard intent on domination, an ordinary boy who’s the hero of a whole world he doesn’t know. This is the story that comes to life in the marvelous Harry Potter series by J. K. Rowling.
+        let chapter1 = `Test Imagine a school in a castle filled with moving staircases, a sport played on flying broomsticks, an evil wizard intent on domination, an ordinary boy who’s the hero of a whole world he doesn’t know. This is the story that comes to life in the marvelous Harry Potter series by J. K. Rowling.
 
 The Dark Lord, Voldemort, tried to murder Harry when he was just a baby—but he failed, killing Harry’s parents but leaving him with a lightning-bolt scar. After Voldemort’s disappearance, Harry is sent to live with his nasty aunt and uncle, far away from any hint of magic. But at the age of eleven, he is invited to attend Hogwarts School of Witchcraft and Wizardry, and a magical world opens before him.
 
 Each of the seven books in the series chronicles one year in Harry’s adventures at Hogwarts and his battle against Lord Voldemort. Harry makes two marvelous best friends named Ron Weasley and Hermione Granger. He studies topics like Transfiguration and Potions under wise headmaster Albus Dumbledore and the malevolent Severus Snape. He becomes expert at a game called Quidditch; encounters incredible creatures like phoenixes and dragons; and discovers an entire Wizarding universe hidden just out of sight, as prone to the darker aspects of human experience as our own, but brightened by a quirky original magic.
 And slowly, Harry unravels the mysteries of his original confrontation with Voldemort: why the Dark Lord tried to kill him, how he lived… and what he must do to survive another encounter.
 
-The first Harry Potter book, Harry Potter and the Sorcerer's Stone, was published in the United Kingdom in 1997; a decade later, the last novel, Harry Potter and the Deathly Hallows, broke all records to become the fastest-selling book in history. The seven novels have been translated into sixty-eight languages, selling over four hundred million copies in more than two hundred countries."`
+The first Harry Potter book, Harry Potter and the Sorcerer's Stone, was published in the United Kingdom in 1997; a decade later, the last novel, Harry Potter and the Deathly Hallows, broke all records to become the fastest-selling book in history. The seven novels have been translated into sixty-eight languages, selling over four hundred million copies in more than two hundred countries.`
 
         const { activeItem } = this.state
 
@@ -90,11 +116,16 @@ The first Harry Potter book, Harry Potter and the Sorcerer's Stone, was publishe
                     </Menu.Item>
                 </Menu>
                 <Segment attached='bottom'>
-                    <Form>
-                        <TextArea id="transcript" autoHeight defaultValue={chapter1} />
+                    <Form onSubmit={this.handleSave}>
+
+                        <TextArea id="transcript" name='text' autoHeight  defaultValue={chapter1} onChange={this.handleChange}/>
+                        <Button color='blue'>Save</Button>
                     </Form>
                 </Segment>
             </div >
         )
     }
 }
+ChapterTabs.contextTypes = {
+    store: React.PropTypes.object
+};
