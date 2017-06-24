@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Segment, Progress, Header } from 'semantic-ui-react'
 
 export default class WhatsonTone extends Component {
+    
     render() {
 
         return (

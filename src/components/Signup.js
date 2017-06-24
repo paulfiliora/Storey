@@ -19,11 +19,14 @@ export default class SignUp extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
+
         const { store } = this.context;
 
         const { username, email, password } = this.state
 
         this.setState({ submittedUsername: username, submittedEmail: email, submittedPassword: password })
+
+        console.log(this.state)
 
         store.dispatch(createNewUser(
             username,
@@ -34,7 +37,7 @@ export default class SignUp extends Component {
 
     render() {
 
-        const { username, password, email } = this.state
+        const { username, email, password } = this.state
 
         return (
             <div>

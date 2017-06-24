@@ -205,3 +205,57 @@ const visibilityFilter = (state = 'SHOW_ALL', action) => {
 }
 
 export default visibilityFilter
+
+
+// const toggleTodo = (todo) => {
+//   return Object.assign({}, todo, {
+//     completed: !todo.completed
+//   });
+// };
+
+// const toggleTodo = (todo) => {
+//   return {
+//     ...todo,
+//     completed: !todo.completed
+//   };
+// };
+
+
+// const todo = (state = {}, action) => {
+//   switch (action.type) {
+//     case 'ADD_TODO':
+//       return {
+//         id: action.id,
+//         text: action.text,
+//         completed: false
+//       }
+//     case 'TOGGLE_TODO':
+//       if (state.id !== action.id) {
+//         return state
+//       }
+
+//       return Object.assign({}, state, {
+//         completed: !state.completed
+//       })
+
+//     default:
+//       return state
+//   }
+// }
+
+
+// const firebaseDB = (state = [], action) => {
+//   switch (action.type) {
+//     case 'ADD_TODO':
+//       return [
+//         ...state,
+//         readAllUsers()
+//       ]
+//     case 'CREATE_NEW_USER':
+//       return state.map(t =>
+//         todo(t, action)
+//       )
+//     default:
+//       return state
+//   }
+// }

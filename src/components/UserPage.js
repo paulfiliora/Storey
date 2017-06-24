@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 // import { connect } from 'react-redux'
-import { Sidebar, Segment, Button, Menu, Image, Header } from 'semantic-ui-react'
+import { Sidebar, Segment, Button, Menu } from 'semantic-ui-react'
 // import CodeEditor from '../containers/codeEditor'
-// import { readCurrentUser } from '../actions'
+import { test } from '../actions'
 import BooksPanel from './UserPageBooksPanel'
 import ChapterTabs from './UserPageChapterTabs'
 import WhatsonTone from './WatsonTone'
@@ -15,6 +15,9 @@ export default class UserPage extends Component {
         const { store } = this.context;
         this.unsubscribe = store.subscribe(() => this.forceUpdate()
         );
+        store.dispatch(test()).then((newstate) => {
+            store.setState(newstate)
+        })
     }
 
     componentWillUnmount() {
@@ -22,6 +25,12 @@ export default class UserPage extends Component {
     }
 
     toggleVisibility = () => this.setState({ visible: !this.state.visible })
+    handleTestClick = () => {
+        const { store } = this.context;
+        // store.getState()
+        console.log(store.getState())
+    }
+
 
     render() {
 
@@ -35,6 +44,8 @@ export default class UserPage extends Component {
                     </Sidebar>
                     <Sidebar.Pusher>
                         <Button basic onClick={this.toggleVisibility}>Menu</Button>
+                        <Button basic onClick={this.handleTestClick}>Test</Button>
+
 
                         <Segment>
                             <ChapterTabs />

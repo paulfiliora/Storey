@@ -1,13 +1,14 @@
-import { createStore } from 'redux'
-import scriptupApp from '../reducers'
+import { createStore, applyMiddleware  } from 'redux'
+import thunk from 'redux-thunk'; 
+import rootReducer from '../reducers'
 import { loadState, saveState } from './localStorage'
 
 const configureStore = () => {
     const persistedState = loadState()
     const store = createStore(
-        scriptupApp,
-        persistedState
-        // applyMiddleware(thunk)
+        rootReducer,
+        persistedState,
+        applyMiddleware(thunk)
     );
 
     store.subscribe(() => {

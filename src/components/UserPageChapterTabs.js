@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Input, Menu, Segment, Header, Form, TextArea, Button, Progress, Grid } from 'semantic-ui-react'
+import { Menu, Segment, Header, Form, TextArea, Button } from 'semantic-ui-react'
 import ToneAnalyzerV3 from 'watson-developer-cloud/tone-analyzer/v3'
 
 export default class ChapterTabs extends Component {
@@ -28,8 +28,41 @@ export default class ChapterTabs extends Component {
             });
     }
 
+    startDictation() {
+        var two_line = /\n\n/g;
+        var one_line = /\n/g;
+        function linebreak(s) {
+            return s.replace(two_line, '<p></p>').replace(one_line, '<br>');
+        }
+        var first_char = /\S/;
+        function capitalize(s) {
+            return s.replace(first_char, function (m) { return m.toUpperCase(); });
+        }
+
+        if (window.hasOwnProperty('webkitSpeechRecognition')) {
+
+            const recognition = new window.webkitSpeechRecognition();
+
+            recognition.continuous = false;
+            recognition.interimResults = false;
+
+            recognition.lang = "en-US";
+            recognition.start();
+
+            recognition.onresult = function (e) {
+                document.getElementById('transcript').value
+                    += linebreak(capitalize(e.results[0][0].transcript))
+                recognition.stop();
+            };
+
+            recognition.onerror = function (e) {
+                recognition.stop();
+            }
+        }
+    }
+
     render() {
-        const chapter1 = `"Imagine a school in a castle filled with moving staircases, a sport played on flying broomsticks, an evil wizard intent on domination, an ordinary boy who’s the hero of a whole world he doesn’t know. This is the story that comes to life in the marvelous Harry Potter series by J. K. Rowling.
+        let chapter1 = `"Imagine a school in a castle filled with moving staircases, a sport played on flying broomsticks, an evil wizard intent on domination, an ordinary boy who’s the hero of a whole world he doesn’t know. This is the story that comes to life in the marvelous Harry Potter series by J. K. Rowling.
 
 The Dark Lord, Voldemort, tried to murder Harry when he was just a baby—but he failed, killing Harry’s parents but leaving him with a lightning-bolt scar. After Voldemort’s disappearance, Harry is sent to live with his nasty aunt and uncle, far away from any hint of magic. But at the age of eleven, he is invited to attend Hogwarts School of Witchcraft and Wizardry, and a magical world opens before him.
 
@@ -43,6 +76,7 @@ The first Harry Potter book, Harry Potter and the Sorcerer's Stone, was publishe
         return (
             <div><br />
                 <Header floated='left'>Parry Hotter</Header>
+
                 <Menu attached='top' tabular>
                     <Menu.Item name='1. Intro' active={activeItem === '1. Intro'} onClick={this.handleItemClick} />
                     <Menu.Item name='2. The Wildfire' active={activeItem === '2. The Wildfire'} onClick={this.handleItemClick} />
@@ -51,12 +85,13 @@ The first Harry Potter book, Harry Potter and the Sorcerer's Stone, was publishe
                     <Menu.Item>
                         <Button basic circular icon='plus' />
                         <Button basic circular icon='search' onClick={this.handleAnalyzerClick} />
+                        <Button basic circular icon='microphone' onClick={this.startDictation} />
 
                     </Menu.Item>
                 </Menu>
                 <Segment attached='bottom'>
                     <Form>
-                        <TextArea placeholder='Try adding multiple lines' autoHeight value={chapter1} />
+                        <TextArea id="transcript" autoHeight defaultValue={chapter1} />
                     </Form>
                 </Segment>
             </div >

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Dropdown, Icon, Input, Menu } from 'semantic-ui-react'
+import { Icon, Input, Menu } from 'semantic-ui-react'
 
 export default class BooksPanel extends Component {
   state = {}

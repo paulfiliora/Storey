@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Grid, Image, Header, Icon, Divider } from 'semantic-ui-react'
 
-import { readCurrentUser } from '../actions'
+// import { itemsHasErrored } from '../actions'
 
 export default class Home extends Component {
 
@@ -18,11 +18,11 @@ export default class Home extends Component {
     handleSubmit = e => {
         e.preventDefault()
 
-        const { store } = this.context;
+        // const { store } = this.context;
+        // const dispatch = store.dispatch()
 
-        store.dispatch(readCurrentUser());
-        console.log(store.getState())
-
+        // store.dispatch(readCurrentUser());
+        // console.log(store.getState())
     }
 
     render() {

@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
 import firebaseDB from './firebase'
 
-const scriptupApp = combineReducers({
+const rootReducer = combineReducers({
   firebaseDB
 })
 
-export default scriptupApp
+export default rootReducer
