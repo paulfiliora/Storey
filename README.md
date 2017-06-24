@@ -1,14 +1,30 @@
-## ScriptUp
 
-A website for storing and sharing javascript problem sets. Instructors can simply import a github repo, and the webapp will set up psets. Students can then get right to them, or with an account engage in communal problem solving and comment out their solutions and questions.
+# Storey: store your stories, turbo charge your writing process, share with the world.
+A webapp for writing books along with tools to assist like emotional analysis and voice dictation writing.
 
-#### Details
+# Installation Instructions
+## Clone Project
+``$ git clone [this_repo] && cd [this_repo]``
 
-Github API
-Firebase Storage
- 
-#### Educational Features:
-  Ø Code Editing
-  Ø Gamification Rewards
-  Ø Push to a list of emails/users.
-  Ø Slack Integration, Categorizing PSet types or class. 
+## Run
+``npm start``
+
+### Sample Responses
+Test Account
+`Snoopy@snoopy.com` || `snoopy1`
+
+# API Framework
+IBM Watson Developer Cloud {Tone-Analyzer}
+https://www.ibm.com/watson/developercloud/tone-analyzer.html
+
+# FE Framework
+Semantic UI React
+https://react.semantic-ui.com/
+
+# React + Redux
+Configured using Create-React-App
+https://github.com/facebookincubator/create-react-app
+
+# Firebase
+User Authentication, Database, & Storage
+https://firebase.google.com
