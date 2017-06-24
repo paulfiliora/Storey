@@ -13,22 +13,21 @@ A webapp for writing books along with tools to assist like emotional analysis an
 ## Run
 ``npm start``
 
-### Sample Responses
-Test Account
+### Sample Login
 `Snoopy@snoopy.com` || `snoopy1`
 
-# API Framework
+## API Framework
 IBM Watson Developer Cloud {Tone-Analyzer}
 https://www.ibm.com/watson/developercloud/tone-analyzer.html
 
-# FE Framework
+## FE Framework
 Semantic UI React
 https://react.semantic-ui.com/
 
-# React + Redux
+## React + Redux
 Configured using Create-React-App
 https://github.com/facebookincubator/create-react-app
 
-# Firebase
+## Firebase
 User Authentication, Database, & Storage
 https://firebase.google.com
