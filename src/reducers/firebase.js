@@ -109,9 +109,6 @@ const writeNewChapter = (title) => {
 }
 
 const writeInChapter = (text) => {
-  // console.log('in the reducer')
-    // console.log(text)
-
   const bookId = '-KnLjyje2E3iy_1ircEG'
   const chapterId = '-KnN1rmnHZWll8QQBafy'
   return database.ref('books/' + bookId + '/chapters/' + chapterId).set({

@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import { Menu, Segment, Header, Form, TextArea, Button } from 'semantic-ui-react'
-// import watson from 'watson-developer-cloud'
-import ToneAnalyzerV3 from 'watson-developer-cloud/tone-analyzer/v3'
 import { writeInChapter } from '../actions'
 
 
@@ -10,6 +8,7 @@ export default class ChapterTabs extends Component {
 
     componentDidMount() {
         const { store } = this.context;
+
         this.unsubscribe = store.subscribe(() => this.forceUpdate()
         );
     }
@@ -20,7 +19,7 @@ export default class ChapterTabs extends Component {
 
     handleChange = (e, { name, value }) => {
         this.setState({ [name]: value })
-        // console.log(this.state)
+        // console.log(this.state.text)
     }
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
@@ -40,70 +39,44 @@ export default class ChapterTabs extends Component {
     }
 
     handleFullScreen = e => {
-        
+
         const body = document.querySelector('#transcript');
 
         // if ( isFullScreen ) {
         //     if (body.requestFullscreen) {
         //         body.requestFullscreen();
         //     } else if (body.webkitRequestFullscreen) {
-                body.webkitRequestFullscreen();
-            // } else if (body.mozRequestFullScreen) {
-            //     body.mozRequestFullScreen();
-            // } else if (body.msRequestFullscreen) {
-            //     body.msRequestFullscreen();
-            // }
+        body.webkitRequestFullscreen();
+        // } else if (body.mozRequestFullScreen) {
+        //     body.mozRequestFullScreen();
+        // } else if (body.msRequestFullscreen) {
+        //     body.msRequestFullscreen();
+        // }
         // }
     }
 
     handleAnalyzerClick(e) {
         e.preventDefault();
+        console.log('clicked analyzer')
+        // console.log(this.state.text)
 
-        var tone_analyzer = new ToneAnalyzerV3({
-            username: 'f26ec927-b4a8-4020-aaac-fcdf8df4df6e',
-            password: 'V1FYHUEY6aPa',
-            version_date: '2016-05-19'
-        });
+        // let text = this.state.text
 
-        tone_analyzer.tone({ text: 'Greetings from Watson Developer Cloud!' },
-            function (err, tone) {
-                if (err)
-                    console.log('Tone Error:  ' + err);
-                else
-                    console.log(JSON.stringify(tone, null, 2));
-            });
+        const URL = "http://storey.webscript.io/";
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
 
-        // const authorization = new watson.AuthorizationV1({
-        //     username: 'f26ec927-b4a8-4020-aaac-fcdf8df4df6e',
-        //     password: 'V1FYHUEY6aPa',
-        //     url: 'https://gateway.watsonplatform.net/tone-analyzer/api/v3/tone?'
-        // })
+        const opts = {
+            method: 'POST',
+            body: JSON.stringify({
+                text: 'This is a damned test string',
+            }),
+            headers: myHeaders,
+        }
+        return fetch(URL,opts)
+            .then(response => Promise.all([response, response.json()]))
+            .then(response => console.log('Final data', response))
 
-        // authorization.getToken(function (err, token) {
-        //     if (!token) {
-        //         console.log('error', err);
-        //     } else {
-        //         var tone_analyzer = new ToneAnalyzerV3({
-        //             username: 'f26ec927-b4a8-4020-aaac-fcdf8df4df6e',
-        //             password: 'V1FYHUEY6aPa',
-        //             version_date: '2016-05-19',
-        //             headers: {
-        //                 'X-Watson-Authorization-Token': token
-        //             }
-        //         });
-        //         if (tone_analyzer) {
-
-        //             tone_analyzer.tone({ text: 'Greetings from Watson Developer Cloud!' },
-        //                 function (err, tone) {
-        //                     if (err)
-        //                         console.log('Tone Error:  ' + err);
-        //                     else
-        //                         console.log(JSON.stringify(tone, null, 2));
-        //                 }
-        //             );
-        //         }
-        //     }
-        // })
     }
 
     startDictation() {
@@ -145,7 +118,6 @@ export default class ChapterTabs extends Component {
         let chapter1 = store.getState().firebaseDB.books["-KnLjyje2E3iy_1ircEG"].chapters["-KnN1rmnHZWll8QQBafy"].text
         const { activeItem } = this.state
 
-
         return (
             <div><br />
                 <Header floated='left'>Parry Hotter</Header>
@@ -157,7 +129,7 @@ export default class ChapterTabs extends Component {
 
                     <Menu.Item>
                         <Button basic circular icon='plus' />
-                        <Button basic circular icon='search' onClick={this.handleAnalyzerClick} />
+                        <Button basic circular icon='search' onClick={this.handleAnalyzerClick.bind(this)} />
                         <Button basic circular icon='microphone' onClick={this.startDictation} />
                         <Button basic circular icon='maximize' onClick={this.handleFullScreen} />
 
