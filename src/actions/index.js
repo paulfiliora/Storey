@@ -13,22 +13,17 @@ export const createNewUser = (username, email, password) => {
   }
 }
 
-export const readCurrentUser = () => {
-  return {
-    type: 'READ_CURRENT_USER',
-  }
-}
-
-// simplified arrow functions
-export const readAllUsers = () => ({
-  type: 'READ_ALL_USERS'
-});
-
 export const loginUser = (email, password) => {
-  return {
+  return dispatch => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        dispatch({
     type: 'LOGIN_USER',
     email,
     password,
+        });
+      }, 500);
+    });
   }
 }
 
@@ -38,6 +33,43 @@ export const signOut = () => {
   }
 }
 
+export const getUsersBook = () => {
+  return dispatch => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        dispatch({
+    type: 'GET_BOOK',
+        });
+      }, 500);
+    });
+  }
+}
+
+export const writeNewChapter = (title) => {
+  return dispatch => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        dispatch({
+    type: 'NEW_CHAPTER',
+    title,
+        });
+      }, 500);
+    });
+  }
+}
+
+export const writeInChapter = (text) => {
+  return dispatch => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        dispatch({
+    type: 'LOGIN_USER',
+    text,
+        });
+      }, 500);
+    });
+  }
+}
 
 export const test = () => {
   return dispatch => {

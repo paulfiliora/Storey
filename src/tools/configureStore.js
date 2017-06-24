@@ -4,16 +4,17 @@ import rootReducer from '../reducers'
 import { loadState, saveState } from './localStorage'
 
 const configureStore = () => {
-    const persistedState = loadState()
+    // const persistedState = loadState()
     const store = createStore(
         rootReducer,
-        persistedState,
         applyMiddleware(thunk)
     );
 
-    store.subscribe(() => {
-        saveState(store.getState())
-    })
+    // store.subscribe(() => {
+    //     saveState(store.getState())
+    // })
     return store
 }
 export default configureStore
+
+// initialState={ user: [], book: []}

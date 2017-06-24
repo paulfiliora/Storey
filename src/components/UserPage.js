@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 // import { connect } from 'react-redux'
 import { Sidebar, Segment, Button, Menu } from 'semantic-ui-react'
 // import CodeEditor from '../containers/codeEditor'
-import { test } from '../actions'
+import { getUsersBook } from '../actions'
 import BooksPanel from './UserPageBooksPanel'
 import ChapterTabs from './UserPageChapterTabs'
 import WhatsonTone from './WatsonTone'
@@ -15,9 +15,7 @@ export default class UserPage extends Component {
         const { store } = this.context;
         this.unsubscribe = store.subscribe(() => this.forceUpdate()
         );
-        store.dispatch(test()).then((newstate) => {
-            store.setState(newstate)
-        })
+        console.log(store.getState())
     }
 
     componentWillUnmount() {

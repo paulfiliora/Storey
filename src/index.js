@@ -6,12 +6,12 @@ import App from './components/App'
 import configureStore from './tools/configureStore'
 import './index.css';
 
-// let initialState = {
-//   books: [],
-//   user:{}
-// }
+let initialState = {
+  book: [],
+  user:[]
+}
 
-const store = configureStore()
+const store = configureStore(initialState)
 // console.log(store.getState())
 render(
   <Provider store={store}>
