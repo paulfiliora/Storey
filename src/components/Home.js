@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import { Grid, Image, Header, Icon, Divider } from 'semantic-ui-react'
-// import {app} from '../tools/express'
-// import { itemsHasErrored } from '../actions'
 
 export default class Home extends Component {
 
@@ -28,6 +26,8 @@ export default class Home extends Component {
     render() {
         // const { store } = this.context;
         // const state = store.getState();
+        // <button onClick={this.handleSubmit}>test</button>
+
 
         return (
             <Grid stackable centered columns={1}>
@@ -41,11 +41,8 @@ export default class Home extends Component {
                         </Header>
                         <Image src={'https://firebasestorage.googleapis.com/v0/b/scriptup-5c4f7.appspot.com/o/images%2Fbackgrounds%2Fworktogether.jpg?alt=media&token=01c20cbc-1313-41aa-b207-72e1000f91ea'} centered size='medium' shape='circular' />
                         <Divider />
-                        <button onClick={this.handleSubmit}>test</button>
-
                     </Grid.Column>
                 </Grid.Row>
-
                 <Grid.Row centered columns={3} >
                     <Grid.Column>
                         <Header as='h4' color='blue'>

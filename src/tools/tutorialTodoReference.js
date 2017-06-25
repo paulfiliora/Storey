@@ -1,3 +1,10 @@
+Surge - surge.sh
+
+mv index.html 200.html
+
+surge -d storey.surge.sh
+
+
 // ***************COMPONENTS******************
 import React, { PropTypes } from 'react'
 import Todo from './Todo'

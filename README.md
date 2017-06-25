@@ -20,6 +20,9 @@ A webapp for writing books along with tools to assist like emotional analysis an
 IBM Watson Developer Cloud {Tone-Analyzer}
 https://www.ibm.com/watson/developercloud/tone-analyzer.html
 
+Server calls are made through a webscript, written in Lua
+https://www.webscript.io/ 
+
 ## FE Framework
 Semantic UI React
 https://react.semantic-ui.com/

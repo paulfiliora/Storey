@@ -73,6 +73,19 @@ export const writeInChapter = (text) => {
   }
 }
 
+export const storeAnalysis = (analysisData) => {
+  return dispatch => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        dispatch({
+    type: 'STORE_ANALYSIS',
+    analysisData,
+        });
+      }, 100);
+    });
+  }
+}
+
 export const test = () => {
   return dispatch => {
     return new Promise((resolve) => {

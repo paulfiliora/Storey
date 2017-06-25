@@ -26,3 +26,17 @@
 .pushable{
   height: calc(100vh - 41px);
 }
+
+:-webkit-full-screen {
+	position: fixed;
+	width: 50%;
+  height: 100%;
+	/*top: 10;*/
+	/*background: white;*/
+}
+
+:-ms-fullscreen {
+  width: auto;
+  height: auto;
+  margin: auto;
+}

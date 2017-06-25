@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
-// import { connect } from 'react-redux'
 import { Sidebar, Segment, Button, Menu } from 'semantic-ui-react'
-// import CodeEditor from '../containers/codeEditor'
 import BooksPanel from './UserPageBooksPanel'
 import ChapterTabs from './UserPageChapterTabs'
-import WhatsonTone from './WatsonTone'
+// import WatsonTone from './WatsonTone'
 import './App.css';
 
 export default class UserPage extends Component {
@@ -25,7 +23,7 @@ export default class UserPage extends Component {
         const { store } = this.context;
         // store.dispatch(writeInChapter())
         // store.getState()
-        // console.log(store.getState())
+        console.log(store.getState())
     }
 
 
@@ -48,10 +46,6 @@ export default class UserPage extends Component {
                             <ChapterTabs />
                         </Segment>
                     </Sidebar.Pusher>
-
-                    <Sidebar as={Menu} animation='overlay' direction='right' visible={visible} icon='labeled' vertical >
-                        <WhatsonTone />
-                    </Sidebar>
 
                 </Sidebar.Pushable>
             </div>
