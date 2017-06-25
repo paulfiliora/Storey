@@ -6,7 +6,7 @@ import WatsonTone from './WatsonTone'
 
 export default class ChapterTabs extends Component {
 
-    state = { activeItem: '1. Intro', bookName: this.context.store.getState().firebaseDB.books["-KnLjyje2E3iy_1ircEG"].name, title: this.context.store.getState().firebaseDB.books["-KnLjyje2E3iy_1ircEG"].chapters["-KnN1rmnHZWll8QQBafy"].title, text: this.context.store.getState().firebaseDB.books["-KnLjyje2E3iy_1ircEG"].chapters["-KnN1rmnHZWll8QQBafy"].text, submittedText: '', visible: false }
+    state = { activeItem: '1. Intro', chapters: this.context.store.getState().firebaseDB.books["-KnLjyje2E3iy_1ircEG"].chapters, bookName: this.context.store.getState().firebaseDB.books["-KnLjyje2E3iy_1ircEG"].name, title: this.context.store.getState().firebaseDB.books["-KnLjyje2E3iy_1ircEG"].chapters["-KnN1rmnHZWll8QQBafy"].title, text: this.context.store.getState().firebaseDB.books["-KnLjyje2E3iy_1ircEG"].chapters["-KnN1rmnHZWll8QQBafy"].text, submittedText: '', visible: false }
 
     toggleVisibility = () => this.setState({ visible: !this.state.visible })
 
@@ -111,9 +111,27 @@ export default class ChapterTabs extends Component {
         let chapter1 = this.state.text
         let bookName = this.state.bookName
         let title = this.state.title
+        let chapters = this.state.chapters
         // let chapter1 = store.getState().firebaseDB.books["-KnLjyje2E3iy_1ircEG"].name
         const { activeItem, visible } = this.state
+        // console.log(chapters)
+        // let chapterStuff
+        // for (const chapterContent in chapters) {
+        //     if (chapters.hasOwnProperty(chapterContent)) {
+        //         const chapterStuff = chapters[chapterContent]
+        //         console.log(chapterStuff.title)
+        //         // return chapterStuff
+        //         // renderables.push(<div>{chapterStuff.title}</div>);
+        //     }
+        // }
+        //    {chapterStuff.map((item, index) => (
+        //         <Header key={index} />
+        //     ))}
 
+        const renderables = Object.keys(chapters).map(chapterContent => {
+            const chapterStuff = chapters[chapterContent];
+            return <Button>{chapterStuff.title}</Button>
+        });
         return (
             <div>
                 <Sidebar.Pushable as={Segment}>
@@ -125,13 +143,13 @@ export default class ChapterTabs extends Component {
                             <Header floated='left'>{bookName}</Header>
                             <Menu attached='top' tabular>
                                 <Menu.Item name={title} active={activeItem === '1. Intro'} onClick={this.handleItemClick} />
-                                {/*<Menu.Item name='2. The Wildfire' active={activeItem === '2. The Wildfire'} onClick={this.handleItemClick} />
-                                <Menu.Item name='3. Bad Juju' active={activeItem === '3. Bad Juju'} onClick={this.handleItemClick} />*/}
+
                                 <Menu.Item>
                                     <Button basic circular icon='plus' />
                                     <Button basic circular icon='search' onClick={this.handleAnalyzerClick.bind(this)} />
                                     <Button basic circular icon='microphone' onClick={this.startDictation} />
                                     <Button basic circular icon='maximize' onClick={this.handleFullScreen} />
+
                                 </Menu.Item>
                             </Menu>
                             <Segment attached='bottom'>
@@ -150,3 +168,7 @@ export default class ChapterTabs extends Component {
 ChapterTabs.contextTypes = {
     store: React.PropTypes.object
 };
+
+{/*<Menu.Item name='2. The Wildfire' active={activeItem === '2. The Wildfire'} onClick={this.handleItemClick} />
+                                <Menu.Item name='3. Bad Juju' active={activeItem === '3. Bad Juju'} onClick={this.handleItemClick} />*/}
+                                                                    // {renderables}

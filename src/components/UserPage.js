@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Sidebar, Segment, Button, Menu } from 'semantic-ui-react'
+import { Sidebar, Segment, Button, Menu, Icon } from 'semantic-ui-react'
 import BooksPanel from './UserPageBooksPanel'
 import ChapterTabs from './UserPageChapterTabs'
 // import WatsonTone from './WatsonTone'
@@ -38,11 +38,14 @@ export default class UserPage extends Component {
                         <BooksPanel />
                     </Sidebar>
                     <Sidebar.Pusher>
-                        <Button basic onClick={this.toggleVisibility}>Menu</Button>
-                        <Button basic onClick={this.handleTestClick}>Test</Button>
-
-
                         <Segment>
+                            <Button animated basic onClick={this.toggleVisibility}>
+                                <Button.Content visible>Menu</Button.Content>
+                                <Button.Content hidden>
+                                    <Icon name='left arrow' />
+                                </Button.Content>
+                            </Button>
+
                             <ChapterTabs />
                         </Segment>
                     </Sidebar.Pusher>
@@ -55,3 +58,5 @@ export default class UserPage extends Component {
 UserPage.contextTypes = {
     store: React.PropTypes.object
 };
+
+                            // <Button basic icon='sidebar' onClick={this.toggleVisibility} />
