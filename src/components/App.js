@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Route, browserHistory } from 'react-router-dom
 
 import Home from './Home'
 import Navbar from './Navbar'
-// import Footer from './Footer'
 import UserPage from './UserPage'
 import SignUp from './Signup'
 

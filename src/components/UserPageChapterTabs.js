@@ -140,9 +140,9 @@ export default class ChapterTabs extends Component {
                     </Sidebar>
                     <Sidebar.Pusher>
                         <Segment basic>
-                            <Header floated='left'>{bookName}</Header>
+                            <Header floated='left'>{bookName} - <span size='tiny'>Chapter: {title}</span> </Header>     
+
                             <Menu attached='top' tabular>
-                                <Menu.Item name={title} active={activeItem === '1. Intro'} onClick={this.handleItemClick} />
 
                                 <Menu.Item>
                                     <Button basic circular icon='plus' />

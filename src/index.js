@@ -8,10 +8,6 @@ import './index.css';
 
 import {getInitialState} from './reducers/firebase';
 
-// let initialState = {
-//   book: [],
-//   user:[]
-// }
 
 getInitialState().then(snap => {
   const store = configureStore();
