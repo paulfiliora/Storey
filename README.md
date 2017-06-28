@@ -14,7 +14,7 @@ A webapp for writing books along with tools to assist like emotional analysis an
 ``npm start``
 
 ## Demo
-``http://storey.surge.sh/userpage``
+``http://storey.surge.sh/``
 
 ### Sample Login
 `Snoopy@snoopy.com` || `snoopy1`
