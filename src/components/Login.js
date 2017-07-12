@@ -49,7 +49,7 @@ export default class LoginForm extends Component {
                 <Button fluid color="teal" size="large">LOGIN</Button>
               </Segment>
               <Message>
-                New to ScriptUp? <a href="/SignUp">Sign Up Here</a>
+                New to Storey? <a href="/SignUp">Sign Up Here</a>
               </Message>
             </Form>
           </Grid.Column>

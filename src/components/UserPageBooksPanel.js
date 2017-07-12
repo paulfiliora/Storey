@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Icon, Input, Menu, Accordion } from 'semantic-ui-react'
+import { signOut } from '../actions'
 
 export default class BooksPanel extends Component {
   state = {
@@ -11,9 +12,15 @@ export default class BooksPanel extends Component {
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
+  handleLogOut = e => {
+    const { store } = this.context;
+    store.dispatch(signOut());
+  }
+
+
   render() {
     let { chapters, activeItem, bookName } = this.state
-    console.log(chapters)
+    // console.log(chapters)
     const renderables = Object.keys(chapters).map(chapterContent => {
       const chapterStuff = chapters[chapterContent];
       return <Accordion.Content><p>{chapterStuff.title}</p></Accordion.Content>
@@ -25,9 +32,8 @@ export default class BooksPanel extends Component {
           <Input placeholder='Search...' />
         </Menu.Item>
 
-        <Menu.Item>
-          Home
-
+        <Menu.Item onClick={this.handleLogOut}>
+          Log Out
           <Menu.Menu>
             <Menu.Item name='Tools' active={activeItem === 'Tools'} onClick={this.handleItemClick}>
               Character Tools
@@ -38,7 +44,7 @@ export default class BooksPanel extends Component {
           </Menu.Menu>
         </Menu.Item>
         <Menu.Header>
-          <Icon name='book' active={activeItem === 'book1'} onClick={this.handleItemClick}/>
+          <Icon name='book' onClick={this.handleItemClick} />
           Books</Menu.Header>
 
         <Accordion>
@@ -57,3 +63,5 @@ export default class BooksPanel extends Component {
 BooksPanel.contextTypes = {
   store: React.PropTypes.object
 };
+
+// active={activeItem === 'book1'}

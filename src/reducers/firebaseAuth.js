@@ -74,18 +74,27 @@ const signInWithEmailAndPassword = (state, email, password) => {
 }
 
 const signOut = () => {
-  return auth.signout().then((data) => {
-    return data
-  }).then(() => {
+auth.signOut().then(function() {
+  console.log('Signed Out');
+}, function(error) {
+  console.error('Sign Out Error', error);
+})
+  // return auth.signout().then((data) => {
+  //   return data
+  // })
+  .then(() => {
     return auth.onAuthStateChanged(user => {
       if (!user) {
         window.location = '/';
       }
     });
-  }).catch((err) => {
+  })
+  .catch((err) => {
     return err
   })
 }
+
+
 
 const deleteAccount = () => {
   const user = auth.currentUser;

@@ -32,6 +32,38 @@ let initialState = {
                 score: 0.01
               },
             }
+          },
+          1: {
+            tones: {
+              0: {
+                score: 0.01
+              },
+              1: {
+                score: 0.01
+              },
+              2: {
+                score: 0.01
+              },
+            }
+          },
+          2: {
+            tones: {
+              0: {
+                score: 0.01
+              },
+              1: {
+                score: 0.01
+              },
+              2: {
+                score: 0.01
+              },
+              3: {
+                score: 0.01
+              },
+              4: {
+                score: 0.01
+              },
+            }
           }
         }
       }

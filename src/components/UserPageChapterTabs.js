@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { Menu, Segment, Header, Form, TextArea, Button, Sidebar } from 'semantic-ui-react'
+import { Menu, Segment, Header, Form, TextArea, Button, Sidebar, Popup } from 'semantic-ui-react'
 import { writeInChapter, storeAnalysis } from '../actions'
 import WatsonTone from './WatsonTone'
 
 
 export default class ChapterTabs extends Component {
 
-    state = { activeItem: '1. Intro', chapters: this.context.store.getState().firebaseDB.books["-KnLjyje2E3iy_1ircEG"].chapters, bookName: this.context.store.getState().firebaseDB.books["-KnLjyje2E3iy_1ircEG"].name, title: this.context.store.getState().firebaseDB.books["-KnLjyje2E3iy_1ircEG"].chapters["-KnN1rmnHZWll8QQBafy"].title, text: this.context.store.getState().firebaseDB.books["-KnLjyje2E3iy_1ircEG"].chapters["-KnN1rmnHZWll8QQBafy"].text, submittedText: '', visible: false }
+    state = { theme: '', activeItem: '1. Intro', chapters: this.context.store.getState().firebaseDB.books["-KnLjyje2E3iy_1ircEG"].chapters, bookName: this.context.store.getState().firebaseDB.books["-KnLjyje2E3iy_1ircEG"].name, title: this.context.store.getState().firebaseDB.books["-KnLjyje2E3iy_1ircEG"].chapters["-KnN1rmnHZWll8QQBafy"].title, text: this.context.store.getState().firebaseDB.books["-KnLjyje2E3iy_1ircEG"].chapters["-KnN1rmnHZWll8QQBafy"].text, submittedText: '', visible: false }
 
     toggleVisibility = () => this.setState({ visible: !this.state.visible })
 
@@ -45,6 +45,11 @@ export default class ChapterTabs extends Component {
     handleFullScreen = e => {
         const body = document.querySelector('#transcript');
         body.webkitRequestFullscreen();
+        // body.mozRequestFullScreen();
+        // body.requestFullscreen();
+        // this.state.theme = 'inverted'
+        this.setState({ theme: 'inverted' })
+        // console.log(this.state.theme)
     }
 
     handleAnalyzerClick(e) {
@@ -109,12 +114,7 @@ export default class ChapterTabs extends Component {
 
     render() {
         let chapter1 = this.state.text
-        let bookName = this.state.bookName
-        let title = this.state.title
-        let chapters = this.state.chapters
-        // let chapter1 = store.getState().firebaseDB.books["-KnLjyje2E3iy_1ircEG"].name
-        const { activeItem, visible } = this.state
-        // console.log(chapters)
+        let { bookName, title, chapters, theme, activeItem, visible } = this.state
         // let chapterStuff
         // for (const chapterContent in chapters) {
         //     if (chapters.hasOwnProperty(chapterContent)) {
@@ -132,6 +132,7 @@ export default class ChapterTabs extends Component {
             const chapterStuff = chapters[chapterContent];
             return <Button>{chapterStuff.title}</Button>
         });
+
         return (
             <div>
                 <Sidebar.Pushable as={Segment}>
@@ -140,16 +141,24 @@ export default class ChapterTabs extends Component {
                     </Sidebar>
                     <Sidebar.Pusher>
                         <Segment basic>
-                            <Header floated='left'>{bookName} - <span size='tiny'>Chapter: {title}</span> </Header>     
-
+                            <Header floated='left'>{bookName} - <span size='tiny'>Chapter: {title}</span> </Header>
                             <Menu attached='top' tabular>
-
                                 <Menu.Item>
-                                    <Button basic circular icon='plus' />
-                                    <Button basic circular icon='search' onClick={this.handleAnalyzerClick.bind(this)} />
-                                    <Button basic circular icon='microphone' onClick={this.startDictation} />
-                                    <Button basic circular icon='maximize' onClick={this.handleFullScreen} />
-
+                                    <Popup
+                                        trigger={<Button basic circular icon='plus' />}
+                                        content='Add a new chapter'
+                                    />
+                                    <Popup
+                                        trigger={<Button basic circular icon='search' onClick={this.handleAnalyzerClick.bind(this)} />}
+                                        content='Analyze the text for emotion & language'
+                                    />
+                                    <Popup
+                                        trigger={<Button basic circular icon='microphone' onClick={this.startDictation} />}
+                                        content='Voice dictation writing'
+                                    /> <Popup
+                                        trigger={<Button basic circular icon='maximize' onClick={this.handleFullScreen} />}
+                                        content='Full Screen writing'
+                                    />
                                 </Menu.Item>
                             </Menu>
                             <Segment attached='bottom'>
