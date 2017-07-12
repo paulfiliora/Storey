@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, Image, Header, Icon, Divider } from 'semantic-ui-react'
+import { Card, Grid, Image, Header, Icon, Divider, Container, Segment } from 'semantic-ui-react'
 
 export default class Home extends Component {
 
@@ -11,6 +11,7 @@ export default class Home extends Component {
 
     componentWillUnmount() {
         this.unsubscribe();
+
     }
 
     handleSubmit = e => {
@@ -30,37 +31,68 @@ export default class Home extends Component {
 
 
         return (
-            <Grid stackable centered columns={1}>
+            <Container >
+                <br />
 
-                <Grid.Row centered columns={1} >
-                    <Grid.Column>
-                        <br />
-                        <Header as='h2' color='blue'>
-                            <Icon name='code' />
-                            Learn to code as a team!
-                        </Header>
-                        <Image src={'https://firebasestorage.googleapis.com/v0/b/scriptup-5c4f7.appspot.com/o/images%2Fbackgrounds%2Fworktogether.jpg?alt=media&token=01c20cbc-1313-41aa-b207-72e1000f91ea'} centered size='medium' shape='circular' />
+
+                <div style={{ 'backgroundImage': 'url(https://static.pexels.com/photos/139306/pexels-photo-139306.jpeg)', 'height': '100%', 'width': '100%', 'backgroundSize': 'cover', 'borderRadius': ' 25px' }}>
+
+                    <Grid stackable columns={1}>
+                        <Grid.Row centered columns={1} >
+                            <div style={{ 'backgroundImage': 'url(https://static.pexels.com/photos/38136/pexels-photo-38136.jpeg)', 'height': '60vh', 'width': '95%', 'backgroundSize': 'cover', 'margin': '0 auto', 'borderRadius': ' 25px' }}>
+                                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+                                <Header as='h2' inverted >
+                                    A data-driven approach at expressing your story!
+                                </Header>
+
+                            </div>
+                            <Divider />
+                        </Grid.Row>
+                        <Grid.Row columns={3} >
+                            <Grid.Column width={10}>
+                                <Segment style={{ 'marginLeft': '50px' }}>
+
+                                    <Header as='h3'>
+                                        Write books and stories saved to the cloud for free! A minimalist & distraction free approach. 
+                                        <br /><br />
+                                        A collection of tools for character development, illustration, and general writing. 
+
+                                    </Header>
+                                </Segment>
+
+                            </Grid.Column>
+                            <Grid.Column width={6}>
+                                <Image src={'http://2.bp.blogspot.com/-gW8ox_ZkqIA/Th2vq4e9QvI/AAAAAAAAAEI/ykZcYtZ6sMQ/s1600/write+your+story.jpg'} size='medium' centered />
+                            </Grid.Column>
+                        </Grid.Row>
                         <Divider />
-                    </Grid.Column>
-                </Grid.Row>
-                <Grid.Row centered columns={3} >
-                    <Grid.Column>
-                        <Header as='h4' color='blue'>
-                            Find and work on problem sets to improve your skills!</Header>
-                        <Image src={'https://firebasestorage.googleapis.com/v0/b/scriptup-5c4f7.appspot.com/o/images%2Fbackgrounds%2Fjavascript-sample.jpg?alt=media&token=330ff5cd-0d66-43c7-8361-62404aca1bd8'} size='medium' shape='circular' centered />
-                    </Grid.Column>
-                    <Grid.Column>
-                        <Header as='h4' color='blue'>
-                            Import & Export with Github!</Header>
-                        <Image src={'https://firebasestorage.googleapis.com/v0/b/scriptup-5c4f7.appspot.com/o/images%2Fbackgrounds%2Finspectocat.jpg?alt=media&token=8513ad0b-97ba-471d-af0e-c05d152cead7'} size='medium' shape='circular' centered />
-                    </Grid.Column>
-                    <Grid.Column>
-                        <Header as='h4' color='blue'>
-                            Communicate with peers to solve problems!</Header>
-                        <Image src={'https://firebasestorage.googleapis.com/v0/b/scriptup-5c4f7.appspot.com/o/images%2Fbackgrounds%2Fteam-bump.jpg?alt=media&token=c4a4a6d3-eb44-4925-a02d-3cb090992e2c'} size='medium' shape='circular' centered />
-                    </Grid.Column>
-                </Grid.Row>
-            </Grid>
+                        <Grid.Row columns={3}>
+                            <Grid.Column width={6}>
+                                <Image src={'https://res.cloudinary.com/crunchbase-production/image/upload/v1441915553/m5xbsgp3zxjvkztcxo4o.png'} size='medium' />
+                            </Grid.Column>
+                            <Grid.Column width={10}>
+                                <Segment style={{ 'marginRight': '50px' }}>
+
+                                    <Header as='h3' >
+                                        Keep your characters on track with their established character-design and finely craft your story by utilizing IBM Watson's Tone Analysis API.
+                                <br />
+                                        <br />
+
+                                        On command analysis of your current page can reveal the Emotion present [Anger, Disgust, Fear, Joy, Sadness], Language Style [Analytical, Confident, Tentative], or Social Tendencies [Openness, Conscientousness, Extraversion, Agreeableness, Emotional Range].
+                                <br />
+                                        <br />
+                                        Target pages, specific sentences on the page, or a specific character's dialogue to keep track of story and character development.
+                                </Header>
+                                </Segment >
+
+                            </Grid.Column>
+
+                        </Grid.Row>
+                    </Grid>
+                </div>
+            </Container>
+
         )
     }
 }

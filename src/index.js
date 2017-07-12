@@ -6,7 +6,7 @@ import App from './components/App'
 import configureStore from './tools/configureStore'
 import './index.css';
 
-import {getInitialState} from './reducers/firebase';
+import {getInitialState} from './reducers/firebaseDb';
 
 
 getInitialState().then(snap => {

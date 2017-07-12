@@ -37,3 +37,11 @@ https://github.com/facebookincubator/create-react-app
 ## Firebase
 User Authentication, Database, & Storage
 https://firebase.google.com
+
+
+## Future Features/Bug Fixes
+Styles & Themes:
+Color/Contrast modes; Book Pages or Desk Papers simulation while typing; Fix full screen mode height requirement
+
+Tone Analysis:
+Sentence Level Highlighting; Character Dev Tools tagging all dialogue to a specific character to keep analysis tally;

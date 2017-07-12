@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import { Button, Dropdown, Menu, Modal } from 'semantic-ui-react'
+import { Button, Dropdown, Menu, Modal, Container } from 'semantic-ui-react'
 import LoginForm from './Login.js'
-// import { readCurrentUser } from '../actions'
-
 
 export default class NavBar extends Component {
 
@@ -20,22 +18,26 @@ export default class NavBar extends Component {
     const { store } = this.context;
 
     return (
-      <Menu attached stackable inverted borderless={true} size='tiny'>
-        <Menu.Menu>
-          <Dropdown href='/' item text='ScriptUp' />
-        </Menu.Menu>
-        <Menu.Menu position='right'>
-          <Menu.Item>
-            <Modal trigger={<Button inverted>My Account</Button>} closeIcon='close'>
-              <LoginForm store={store} />
-            </Modal>
-          </Menu.Item>
-        </Menu.Menu>
+      <Menu attached borderless={true}>
+        <Container>
+          <Menu secondary borderless={true} size='tiny'>
+
+            <Menu.Item position='right'>
+              <Modal trigger={<Button primary>My Account</Button>} closeIcon='close'>
+                <LoginForm store={store} />
+              </Modal>
+            </Menu.Item>
+
+            <Menu.Item name='Storey' href='/' />
+            <Menu.Item name='About' href='/' />
+
+          </Menu>
+        </Container>
       </Menu>
     )
   }
 }
 
 NavBar.contextTypes = {
-    store: React.PropTypes.object
+  store: React.PropTypes.object
 };

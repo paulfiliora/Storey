@@ -27,6 +27,11 @@
   height: calc(100vh - 41px);
 }
 
+.landing-image {
+    background-image: url('../assets/pad.jpeg') !important;
+    background-size: cover !important;
+}
+
 :-webkit-full-screen {
 	position: fixed;
 	width: 50%;
