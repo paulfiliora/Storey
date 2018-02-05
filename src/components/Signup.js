@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form, Icon, Message, Container, Modal } from 'semantic-ui-react'
+import { Button, Form, Icon, Message, Container, Modal, Menu } from 'semantic-ui-react'
 import LoginForm from './Login.js'
 import { createNewUser } from '../actions'
 
@@ -41,6 +41,13 @@ export default class SignUp extends Component {
 
         return (
             <div>
+            <Menu size='massive' color='teal'>
+              <Menu.Item>
+                <img alt='logo' src='https://firebasestorage.googleapis.com/v0/b/scriptup-5c4f7.appspot.com/o/images%2Fbackgrounds%2FScriptUpLogo.png?alt=media&token=a3ab1422-2cfb-4c39-b01f-c7c4e85ca886' />
+              </Menu.Item>
+
+                 <Menu.Item name='home' href='/'/>
+               </Menu>
                 <Container>
                     <br />
                     <Message
@@ -56,9 +63,7 @@ export default class SignUp extends Component {
                         <Button color='blue'>Submit</Button>
                     </Form>
                     <Message attached='bottom' warning>
-                        <Icon name='help' />Already signed up?&nbsp;<Modal trigger={<a href='#'>Login here</a>} closeIcon='close'>
-                            <LoginForm {...this.props} />
-                        </Modal>&nbsp;instead.
+                        <Icon name='help' />Already signed up? <a href='/Login'>Login here</a> instead.
                 </Message>
                 </Container>
                 <br /><br /> <br /><br /><br /><br />

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, Segment, Input, Button, Header, Image, Form, Message } from 'semantic-ui-react'
+import { Grid, Menu, Container, Segment, Input, Button, Header, Image, Form, Message } from 'semantic-ui-react'
 import { loginUser } from '../actions'
 
 export default class LoginForm extends Component {
@@ -20,8 +20,6 @@ export default class LoginForm extends Component {
       email,
       password
     ));
-
-
   }
 
   render() {
@@ -30,7 +28,15 @@ export default class LoginForm extends Component {
 
     return (
       <div>
+        <Menu size='massive' color='teal'>
+          <Menu.Item>
+            <img alt='logo' src='https://firebasestorage.googleapis.com/v0/b/scriptup-5c4f7.appspot.com/o/images%2Fbackgrounds%2FScriptUpLogo.png?alt=media&token=a3ab1422-2cfb-4c39-b01f-c7c4e85ca886' />
+          </Menu.Item>
 
+             <Menu.Item name='home' href='/' />
+           </Menu>
+
+      <Container>
         <Grid centered verticalAlign="middle">
           <Grid.Column textAlign="center">
             <br />
@@ -54,6 +60,7 @@ export default class LoginForm extends Component {
             </Form>
           </Grid.Column>
         </Grid>
+      </Container>
       </div>
     )
   }
