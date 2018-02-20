@@ -10,11 +10,8 @@ import {
     List,
     Menu,
     Segment,
-    Visibility,
-    Modal
+    Visibility
 } from 'semantic-ui-react'
-import LoginForm from './Login.js'
-
 
 const FixedMenu = () => (
   <Menu fixed='top' size='large'>
@@ -120,7 +117,6 @@ export default class Home extends Component {
                             <Grid.Column floated='right' width={6}>
                                 <Image
                                     bordered
-                                    rounded
                                     size='large'
                                     src='https://static.pexels.com/photos/38136/pexels-photo-38136.jpeg'
                                 />

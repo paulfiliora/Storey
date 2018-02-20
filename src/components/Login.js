@@ -11,11 +11,8 @@ export default class LoginForm extends Component {
   handleSubmit = e => {
     e.preventDefault()
     const { store } = this.context;
-
     const { email, password } = this.state
-
     this.setState({ submittedEmail: email, submittedPassword: password })
-
     store.dispatch(loginUser(
       email,
       password

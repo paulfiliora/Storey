@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form, Icon, Message, Container, Modal, Menu } from 'semantic-ui-react'
-import LoginForm from './Login.js'
+import { Button, Form, Icon, Message, Container, Menu } from 'semantic-ui-react'
 import { createNewUser } from '../actions'
 
 export default class SignUp extends Component {
@@ -26,7 +25,7 @@ export default class SignUp extends Component {
 
         this.setState({ submittedUsername: username, submittedEmail: email, submittedPassword: password })
 
-        console.log(this.state)
+        // console.log(this.state)
 
         store.dispatch(createNewUser(
             username,
@@ -52,7 +51,7 @@ export default class SignUp extends Component {
                     <br />
                     <Message
                         attached
-                        header='Welcome to our ScriptUp!'
+                        header='Welcome to Storey!'
                         content='Fill out the form below to sign-up for a new account'
                     />
                     <Form onSubmit={this.handleSubmit} className='attached fluid segment'>

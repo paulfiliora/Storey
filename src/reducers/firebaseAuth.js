@@ -16,8 +16,11 @@ const writeUserData = (userId, username, email) => {
 }
 
 const createUserWithEmailAndPassword = (username, email, password) => {
+  console.log("in Auth")
   return auth.createUserWithEmailAndPassword(email, password)
     .then((authData) => {
+      console.log("in Auth 2")
+
       const userData = {};
       if (!!username) {
         userData.displayName = username
@@ -32,7 +35,7 @@ const createUserWithEmailAndPassword = (username, email, password) => {
       }))
         .then((res => {
           const user = auth.currentUser;
-          return user.sendEmailVerification()
+          return user.sendEmailVerification();
         }))
         .then(() => {
           return auth.onAuthStateChanged(user => {
@@ -45,9 +48,18 @@ const createUserWithEmailAndPassword = (username, email, password) => {
           return authData
         })
     }).catch((err) => {
+      var errorCode = err.code;
+      var errorMessage = err.message;
+      if (errorCode == 'auth/weak-password') {
+        alert('The password is too weak.');
+      } else {
+        alert(errorMessage);
+      }
+      console.log(err.message);
       return err
     })
 }
+
 const signInWithEmailAndPassword = (state, email, password) => {
   return auth.signInWithEmailAndPassword(email, password)
     .then((authData) => {
@@ -94,8 +106,6 @@ auth.signOut().then(function() {
   })
 }
 
-
-
 const deleteAccount = () => {
   const user = auth.currentUser;
   return user.delete().then((data) => {
@@ -104,7 +114,6 @@ const deleteAccount = () => {
     return err
   })
 }
-
 
 const firebaseAuth = (state = [], action) => {
   switch (action.type) {
